@@ -9,6 +9,8 @@ import { getNumCart, numCartSelector } from '../store/reducers/numCartSlice';
 import { FaSearch } from 'react-icons/fa';
 import './Header.css';
 
+console.log("haha")
+
 const Header = (props) => {
     const numCart = useSelector(numCartSelector);
     const dispatch = useDispatch();
