@@ -44,9 +44,9 @@ const User = () => {
                     </Breadcrumbs>
                     <h2 style={{ marginTop: '10px' }}>
                         {targetNavItem === 'my-account'
-                            ? 'My Account'
+                            ? 'Tài khoản'
                             : targetNavItem === 'my-orders'
-                            ? 'My Orders'
+                            ? 'Đơn hàng'
                             : 'My Wishlist'}
                     </h2>
                     <ArrowDropDownIcon className='dropdown-icon' />
@@ -77,13 +77,13 @@ const User = () => {
                         >
                             Đơn hàng của tôi
                         </NavItem>
-                        <Hr />
+                        {/* <Hr />
                         <NavItem
                             className={targetNavItem === 'my-wishlist' ? 'active' : ''}
                             onClick={() => changeNavItem('my-wishlist')}
                         >
                             Giỏ hàng yêu thích
-                        </NavItem>
+                        </NavItem> */}
                     </NavBox>
                     <Content>
                         {targetNavItem === 'my-orders' && <Orders />}

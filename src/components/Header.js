@@ -43,7 +43,7 @@ const Header = (props) => {
                 collapseOnSelect
                 expand='lg'
                 variant='dark'
-                style={{ background: "linear-gradient(to right, #2167dd, #2167dd)", fontSize: '18px' }}
+                style={{ backgroundColor: '#2167dd', fontSize: '18px' }}
             >
                 <Container style={{maxWidth: '1350px', marginLeft: '100px', padding: '0px'}}>
                     <Navbar.Brand as={Link} to='/' className='d-flex flex-row align-items-center gap-2'>
@@ -110,10 +110,14 @@ const Header = (props) => {
                                 <UserIcon></UserIcon>
                             </Dropdown.Toggle>
 
-                            <Dropdown.Menu style={{ zIndex: '9999', minWidth: '50px' }}>
+                            <Dropdown.Menu style={{ zIndex: '9999', border: '0.1px solid black', minWidth: '50px' }}>
                                 {user ? (
                                     <>
-                                        <Dropdown.Item as={Link} to='/user'>
+                                        <Dropdown.Item
+                                            as={Link}
+                                            to='/user'
+                                            style={{ border: 'none', outline: 'none', height: '100%' }}
+                                        >
                                             Tài khoản của tôi
                                         </Dropdown.Item>
                                         <Dropdown.Divider />

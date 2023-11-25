@@ -1,0 +1,24 @@
+.react-confirm-alert-body {
+    background-color: #5573ec;
+    color: white;
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.react-confirm-alert-body button {
+    background-color: white;
+    color: black;
+    font-size: 17px;
+}
+
+.react-confirm-alert-body .btnYes:hover {
+    background-color: #cc3300;
+    color: white;
+}
+
+.react-confirm-alert-body .btnNo:hover {
+    background-color: #ccc;
+    color: black;
+}

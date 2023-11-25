@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Facebook, Instagram, GitHub, YouTube } from '@mui/icons-material';
 import { Home, Email, LocalPhone, AccessTime } from '@mui/icons-material';
+import PersonIcon from '@mui/icons-material/Person';
 
 const Footer = () => {
     return (
@@ -14,8 +15,14 @@ const Footer = () => {
                 />
                 <Infor>
                     <InforTitle>Thành viên nhóm</InforTitle>
-                    <InforItem>Nguyễn Đức Huy</InforItem>
-                    <InforItem>Huỳnh Lê Huy</InforItem>
+                    <InforIcon>
+                        <PersonIcon />
+                        <InforItem>Nguyễn Đức Huy - 20110332</InforItem>
+                    </InforIcon>
+                    <InforIcon>
+                        <PersonIcon />
+                        <InforItem>Huỳnh Lê Huy - 20110493</InforItem>
+                    </InforIcon>
                 </Infor>
                 <Infor>
                     <InforTitle>Thông tin liên hệ</InforTitle>
@@ -36,38 +43,45 @@ const Footer = () => {
                         <InforItem>utephamarcy@gmail.com</InforItem>
                     </InforIcon>
                 </Infor>
-                <Infor>
-                    <InforTitle>Mạng xã hội</InforTitle>
-                    <Facebook style={{ margin: '10px' }} />
-                    <YouTube style={{ margin: '10px' }} />
-                    <GitHub style={{ margin: '10px' }} />
-                    <Instagram style={{ margin: '10px' }} />
-                </Infor>
+                <div>
+                    <Infor>
+                        <InforTitle>Mạng xã hội</InforTitle>
+                        <InforIcon style={{ marginLeft: '22px' }}>
+                            <Facebook />
+                            <InforItem>Facebook.com/utePharmacy</InforItem>
+                        </InforIcon>
+                        <InforIcon style={{ marginLeft: '22px' }}>
+                            <Instagram />
+                            <InforItem>Instagram.com/utePharmacy</InforItem>
+                        </InforIcon>
+                    </Infor>
+                    <Infor style={{ marginTop: '7px' }}>
+                        <InforTitle>Hỗ trợ thanh toán</InforTitle>
+                        <div style={{ display: 'flex', justifyContent: 'space-evenly', fontSize: '22px' }}>
+                            <i className='fa fa-cc-paypal'></i>
+                            <i className='fa fa-cc-visa'></i>
+                            <i className='fa fa-cc-mastercard'></i>
+                            <i className='fa fa-credit-card-alt'></i>
+                            <i className='fa fa-cc-jcb'></i>
+                        </div>
+                    </Infor>
+                </div>
             </Row>
-            <SubRow>
-                <Copyright>Copyright © 2023 UTE TEAM</Copyright>
-                <i className='fa fa-cc-paypal'></i>
-                <i className='fa fa-cc-visa'></i>
-                <i className='fa fa-cc-mastercard'></i>
-                <i className='fa fa-credit-card-alt'></i>
-                <i className='fa fa-cc-jcb'></i>
+            <SubRow style={{ height: '40px' }}>
+                <Copyright style={{ fontWeight: 'bold' }}>Nhóm 6 © 2023 UTE Pharmacy</Copyright>
             </SubRow>
         </div>
     );
 };
 const Row = styled.div`
-    background-color: #1e72ee;
+    background-color: #2167dd;
     width: 100%;
-    min-height: 320px;
+    min-height: 290px;
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
     justify-content: space-evenly;
     padding-top: 50px;
-    margin-top: 50px;
     @media (max-width: 480px) {
-        /* display: block; */
-        /* margin: auto; */
         flex-direction: column;
     }
 `;
@@ -120,20 +134,15 @@ const SubRow = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 60px;
     border: none;
     border-top: white solid 1px;
-
     i {
         font-size: 40px;
         margin: auto 4px;
     }
 `;
 const Copyright = styled.div`
-    position: absolute;
-    right: 12%;
     margin: auto 0px;
-    line-height: 60px;
     @media (max-width: 768px) {
         display: none;
     }
