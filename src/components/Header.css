@@ -1,0 +1,17 @@
+#responsive-navbar-nav {
+    margin-left: 5rem;
+    align-items: stretch;
+    width: 30vw;
+}
+
+#responsive-navbar-nav .searchbar {
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    width: 50rem;
+}
+
+#responsive-navbar-nav .searchbar i {
+    height: 20px;
+    font-size: 20px;
+}
