@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getNumCart, numCartSelector } from '../store/reducers/numCartSlice';
-import './Header.css';
+import { FaSearch } from 'react-icons/fa';
+// import './Header.css';
 
 const Header = (props) => {
     const numCart = useSelector(numCartSelector);
@@ -44,7 +45,7 @@ const Header = (props) => {
                 variant='dark'
                 style={{ backgroundColor: '#2167dd', fontSize: '18px' }}
             >
-                <Container>
+                <Container style={{maxWidth: '1350px', marginLeft: '100px', padding: '0px'}}>
                     <Navbar.Brand as={Link} to='/' className='d-flex flex-row align-items-center gap-2'>
                         <img
                             src={require('./images/logo_UTE.png')}
@@ -67,20 +68,21 @@ const Header = (props) => {
                         </Title>
                     </Navbar.Brand>
 
-                    <Navbar.Collapse id='responsive-navbar-nav'>
-                        <SearchBar className='searchbar'>
-                            <SearchButton style={{ backgroundColor: 'white' }}>
-                                <i className='fa fa-search'></i>
-                            </SearchButton>
+                    <Navbar.Collapse id='responsive-navbar-nav' style={{marginLeft: '15%'}}>
+                        <SearchBar className='searchbar overflow-hidden'>
                             <SearchInput
                                 type='text'
                                 name='search_product'
                                 id='search_product'
                                 value={searchVal}
                                 onChange={(e) => setSearchVal(e.target.value)}
-                                placeholder='Tìm kiếm thuốc . . .'
+                                placeholder='Tìm kiếm thuốc...'
                                 onKeyUp={(e) => searchProduct(e)}
+								style={{width: '420px'}}
                             />
+							<div style={{display: 'flex', backgroundColor: '#ade8f4', padding: '15px', borderRadius: '50%'}}>
+								<FaSearch style={{ height: '17px', width: '17px'}}/>
+							</div>
                         </SearchBar>
 
                         <Nav className='me-auto'></Nav>
@@ -93,19 +95,22 @@ const Header = (props) => {
                     </Navbar.Collapse>
 
                     <NavIcon>
-                        <div style={{ marginLeft: 'auto', minWidth: '60px' }}>
-                            <Link style={{ textDecoration: 'none' }} to='/cart'>
-                                <CartIcon />
-                                <CartCounter>{numCart}</CartCounter>
+                        <div style={{ marginLeft: 'auto', minWidth: '60px', marginRight: '15px' }}>
+                            <Link style={{ textDecoration: 'none', display: 'flex', gap: '10px', color: 'white', padding: '10px 20px', backgroundColor: '#1053b6', borderRadius: '50px' }} to='/cart'>
+								<div style={{position: 'relative'}}>
+									<CartIcon />
+									<CartCounter>{numCart}</CartCounter>
+								</div>
+                                <span>Giỏ hàng</span>
                             </Link>
                         </div>
 
                         <Dropdown>
-                            <Dropdown.Toggle style={{ backgroundColor: 'transparent', border: 'none' }}>
+                            <Dropdown.Toggle style={{ backgroundColor: 'transparent', border: 'none', display: 'flex', gap: '5px', borderRadius: '50px', backgroundColor: '#1053b6', padding: '10px 10px' }}>
                                 <UserIcon></UserIcon>
                             </Dropdown.Toggle>
 
-                            <Dropdown.Menu style={{ zIndex: '9999', border: '0.1px solid black' }}>
+                            <Dropdown.Menu style={{ zIndex: '9999', border: '0.1px solid black', minWidth: '50px' }}>
                                 {user ? (
                                     <>
                                         <Dropdown.Item
@@ -157,35 +162,19 @@ const SearchBar = styled.div`
     align-items: center;
     background-color: white;
     border: none;
-    border-radius: 15px;
-    padding: 5px 15px;
-    max-width: 250px;
-    /* @media (max-width: 768px){
-    display: none;
-  } */
+    border-radius: 30px;
+    padding: 5px 5px 5px 20px;
 `;
 const SearchInput = styled.input`
-    display: block;
     border: none;
     outline: none;
     width: 100%;
 `;
-const SearchButton = styled.button`
-    display: inline;
-    border: none;
-    background-color: gray;
-    border-radius: 50%;
-    width: 24px;
-    /* padding: 5px; */
-    i {
-        width: 16px;
-    }
-`;
+
 const NavIcon = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 0 20px;
     margin-left: auto;
     .dropdown-toggle::after {
         display: none !important;
@@ -200,22 +189,20 @@ const CartIcon = styled(ShoppingCart)`
     font-size: 50pt;
     display: inline;
 `;
-const CartCounter = styled.p`
+const CartCounter = styled.span`
     color: black;
+	min-height: 16px;
+	min-width: 16px;
     background-color: white;
     font-size: 12px;
     font-weight: bold;
-    padding: 0px 2px;
-    border-radius: 7px;
-    border: 1px black solid;
-    display: inline;
-    position: relative;
-    bottom: 10px;
-    right: 12px;
-    /* font-family: 'Helvetica Neue', Helvetica, Arial; */
-    @media (max-width: 768px) {
-        /* width: 15vw; */
-    }
+    padding: 0px 4px;
+    border-radius: 50%;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+	line-height: 16px;
+	background-color: #f7a072;
 `;
 const UserIcon = styled(Person)`
     color: white;
