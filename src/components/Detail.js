@@ -528,10 +528,10 @@ const Detail = () => {
                                     </div>
                                     <div className='name'>{product.name}</div>
                                     <p className='price' style={{ color: 'gray', margin: '0 0 0 5%' }}>
-                                        <s>{'$' + product.old_price}</s>
+                                        <s>{product.old_price + 'đ/Hộp'}</s>
                                     </p>
                                     <p className='price' style={{ fontSize: '20px', margin: '0 0 0 5%' }}>
-                                        <b>{'$' + product.price}</b>
+                                        <b>{product.price + 'đ/Hộp'}</b>
                                     </p>
                                 </SimilarItem>
                             );

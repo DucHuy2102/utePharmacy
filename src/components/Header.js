@@ -45,7 +45,7 @@ const Header = (props) => {
                 variant='dark'
                 style={{ backgroundColor: '#2167dd', fontSize: '18px' }}
             >
-                <Container style={{maxWidth: '1350px', marginLeft: '100px', padding: '0px'}}>
+                <Container style={{ maxWidth: '1350px', marginLeft: '100px', padding: '0px' }}>
                     <Navbar.Brand as={Link} to='/' className='d-flex flex-row align-items-center gap-2'>
                         <img
                             src={require('./images/logo_UTE.png')}
@@ -68,7 +68,7 @@ const Header = (props) => {
                         </Title>
                     </Navbar.Brand>
 
-                    <Navbar.Collapse id='responsive-navbar-nav' style={{marginLeft: '15%'}}>
+                    <Navbar.Collapse id='responsive-navbar-nav' style={{ marginLeft: '15%' }}>
                         <SearchBar className='searchbar overflow-hidden'>
                             <SearchInput
                                 type='text'
@@ -78,11 +78,18 @@ const Header = (props) => {
                                 onChange={(e) => setSearchVal(e.target.value)}
                                 placeholder='Tìm kiếm thuốc...'
                                 onKeyUp={(e) => searchProduct(e)}
-								style={{width: '420px'}}
+                                style={{ width: '420px' }}
                             />
-							<div style={{display: 'flex', backgroundColor: '#ade8f4', padding: '15px', borderRadius: '50%'}}>
-								<FaSearch style={{ height: '17px', width: '17px'}}/>
-							</div>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    backgroundColor: '#ade8f4',
+                                    padding: '15px',
+                                    borderRadius: '50%',
+                                }}
+                            >
+                                <FaSearch style={{ height: '17px', width: '17px' }} />
+                            </div>
                         </SearchBar>
 
                         <Nav className='me-auto'></Nav>
@@ -96,17 +103,38 @@ const Header = (props) => {
 
                     <NavIcon>
                         <div style={{ marginLeft: 'auto', minWidth: '60px', marginRight: '15px' }}>
-                            <Link style={{ textDecoration: 'none', display: 'flex', gap: '10px', color: 'white', padding: '10px 20px', backgroundColor: '#1053b6', borderRadius: '50px' }} to='/cart'>
-								<div style={{position: 'relative'}}>
-									<CartIcon />
-									<CartCounter>{numCart}</CartCounter>
-								</div>
+                            <Link
+                                style={{
+                                    textDecoration: 'none',
+                                    display: 'flex',
+                                    gap: '10px',
+                                    color: 'white',
+                                    padding: '10px 20px',
+                                    backgroundColor: '#1053b6',
+                                    borderRadius: '50px',
+                                }}
+                                to='/cart'
+                            >
+                                <div style={{ position: 'relative' }}>
+                                    <CartIcon />
+                                    <CartCounter>{numCart}</CartCounter>
+                                </div>
                                 <span>Giỏ hàng</span>
                             </Link>
                         </div>
 
                         <Dropdown>
-                            <Dropdown.Toggle style={{ backgroundColor: 'transparent', border: 'none', display: 'flex', gap: '5px', borderRadius: '50px', backgroundColor: '#1053b6', padding: '10px 10px' }}>
+                            <Dropdown.Toggle
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    border: 'none',
+                                    display: 'flex',
+                                    gap: '5px',
+                                    borderRadius: '50px',
+                                    backgroundColor: '#1053b6',
+                                    padding: '10px 10px',
+                                }}
+                            >
                                 <UserIcon></UserIcon>
                             </Dropdown.Toggle>
 
@@ -191,8 +219,8 @@ const CartIcon = styled(ShoppingCart)`
 `;
 const CartCounter = styled.span`
     color: black;
-	min-height: 16px;
-	min-width: 16px;
+    min-height: 16px;
+    min-width: 16px;
     background-color: white;
     font-size: 12px;
     font-weight: bold;
@@ -201,8 +229,8 @@ const CartCounter = styled.span`
     position: absolute;
     top: -3px;
     right: -3px;
-	line-height: 16px;
-	background-color: #f7a072;
+    line-height: 16px;
+    background-color: #f7a072;
 `;
 const UserIcon = styled(Person)`
     color: white;

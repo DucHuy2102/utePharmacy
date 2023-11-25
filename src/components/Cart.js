@@ -133,7 +133,7 @@ const Cart = () => {
                                 Giá tiền
                             </Col>
                             <Col md={1} sm={2} xs={2}>
-                                Đơn vị
+                                Hộp
                             </Col>
                             <CloseResponesive md={2} sm={3} xs={3}>
                                 Thành tiền
@@ -184,7 +184,7 @@ const Cart = () => {
                                 <Ship>Chi phí vận chuyển:</Ship>
                             </Col>
                             <Col sm={2.5} xs={2.5}>
-                                <ValueShip>{(10.07).toLocaleString()}</ValueShip>
+                                <ValueShip>{(10.07).toLocaleString()}đ</ValueShip>
                             </Col>
                         </Row>
                         <br />
@@ -193,7 +193,7 @@ const Cart = () => {
                                 <Ship>Tổng chi phí:</Ship>
                             </Col>
                             <Col sm={2.5} xs={2.5}>
-                                <ValueShip>${total}</ValueShip>
+                                <ValueShip>{total}đ</ValueShip>
                             </Col>
                         </Row>
                         <br />
@@ -381,6 +381,7 @@ const LinkStyle = {
 };
 const ContainerStyled = styled(Container)`
     margin-top: 40px;
+    margin-bottom: 20px;
 `;
 const CloseResponesive = styled(Col)`
     @media (max-width: 480px) {

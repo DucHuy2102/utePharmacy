@@ -138,7 +138,7 @@ const RowOfTable = (props) => {
                         </Row>
                     </Col>
                     <Col md={2} sm={3} xs={3}>
-                        {/* {props.product.price.toLocaleString()} */}${props.product.price}
+                        {props.product.price}đ
                     </Col>
                     <Col md={1.2} sm={2.2} xs={2.2}>
                         <div style={ArrowIcon}>

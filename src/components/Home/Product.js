@@ -15,11 +15,11 @@ const Product = (props) => {
         <Container key={props.idx} display={props.display} onClick={() => props.onClick(product.product_id)}>
             {product.amount > 0 ? (
                 <Status display={props.display}>
-                    <i className='fa fa-check-circle' aria-hidden='true'></i> in stock
+                    <i className='fa fa-check-circle' aria-hidden='true'></i> Còn hàng
                 </Status>
             ) : (
                 <Status display={props.display} color='#cf2115'>
-                    <i className='fa fa-check-circle' aria-hidden='true'></i> out of stock
+                    <i className='fa fa-check-circle' aria-hidden='true'></i> Hết hàng
                 </Status>
             )}
             <Box display={props.display}>
@@ -37,10 +37,10 @@ const Product = (props) => {
                     {props.display === 1 && <Desc>{product.description}</Desc>}
                     <Box display={props.display}>
                         <Text style={{ color: 'gray', marginRight: '10px' }}>
-                            <s>{'$' + product.old_price}</s>
+                            <s>{product.old_price + 'đ/Hộp'}</s>
                         </Text>
                         <Text style={{ fontSize: '20px' }}>
-                            <b>{'$' + product.price}</b>
+                            <b>{product.price + 'đ/Hộp'}</b>
                         </Text>
                     </Box>
                     {props.display === 1 && (

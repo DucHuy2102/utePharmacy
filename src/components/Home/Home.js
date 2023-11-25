@@ -200,26 +200,29 @@ const Home = (props) => {
             <Container>
                 <Carousel>
                     <Carousel.Item style={{ width: '100%', height: '100%' }}>
-                        <Poster src={images.poster} alt='poster' />
-                    </Carousel.Item>
-                    <Carousel.Item style={{ width: '100%', height: '100%' }}>
                         <Poster
-                            src='https://www.ungeek.ph/wp-content/uploads/2019/10/asus_zenbook_duo_line_pre_order_ph.jpg'
+                            src='https://cdn.nhathuoclongchau.com.vn/unsafe/1080x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/Banner_Web_PC_1610x492_ca44e10973.png'
                             alt='poster'
                         />
                     </Carousel.Item>
                     <Carousel.Item style={{ width: '100%', height: '100%' }}>
                         <Poster
-                            src='https://www.phucanh.vn/media/news/0609_KMLaptopGamingAsusBTSt9-2021.png'
+                            src='https://cdn.nhathuoclongchau.com.vn/unsafe/1080x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/Banner_Web_PC_1610x492_1_d1b098bca9.png'
+                            alt='poster'
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item style={{ width: '100%', height: '100%' }}>
+                        <Poster
+                            src='https://cdn.nhathuoclongchau.com.vn/unsafe/1080x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/web_PC_0061a1a107.jpg'
                             alt='poster'
                         />
                     </Carousel.Item>
                 </Carousel>
-                <Brands>
+                {/* <Brands>
                     {brands.map((brand, idx) => {
                         return <Brand key={idx} src={brand.img} alt='brand' onClick={() => filterBrand(brand)} />;
                     })}
-                </Brands>
+                </Brands> */}
                 <Content>
                     <BoxFilter show={show}>
                         <Filter
@@ -242,7 +245,7 @@ const Home = (props) => {
                             <DisplayOption>
                                 <div className='option'>
                                     <FormControl sx={{ m: 1 }} size='small'>
-                                        <InputLabel id='show'>Show</InputLabel>
+                                        <InputLabel id='show'>Trang</InputLabel>
                                         <Select
                                             labelId='show'
                                             id='show'
@@ -250,11 +253,11 @@ const Home = (props) => {
                                             label='Show'
                                             onChange={changeNumPerPage}
                                         >
-                                            <MenuItem value={10}>10 per page</MenuItem>
-                                            <MenuItem value={20}>20 per page</MenuItem>
-                                            <MenuItem value={30}>30 per page</MenuItem>
-                                            <MenuItem value={40}>40 per page</MenuItem>
-                                            <MenuItem value={50}>50 per page</MenuItem>
+                                            <MenuItem value={10}>10 sản phẩm</MenuItem>
+                                            <MenuItem value={20}>20 sản phẩm</MenuItem>
+                                            <MenuItem value={30}>30 sản phẩm</MenuItem>
+                                            <MenuItem value={40}>40 sản phẩm</MenuItem>
+                                            <MenuItem value={50}>50 sản phẩm</MenuItem>
                                         </Select>
                                     </FormControl>
                                     <Icon onClick={() => changeDisplay(0)}>

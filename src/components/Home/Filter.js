@@ -9,8 +9,6 @@ const Filter = (props) => {
     function valuetext(value) {
         return `${value}°C`;
     }
-    // const [value, setValue] = useState([500, 1500]);
-    // const [ramFilter, setRamFilter] = useState([]);
     const targetRam = (ram) => {
         if (!props.ramFilter.includes(ram)) {
             props.setRamFilter([...props.ramFilter, ram]);
@@ -49,11 +47,11 @@ const Filter = (props) => {
     return (
         <Container>
             <Row>
-                <Title>Filters</Title>
+                <Title>Bộ lọc</Title>
                 {props.show === 1 && <CloseIcon onClick={() => props.setShow(0)} />}
             </Row>
-            <Button type='transparent' text='Clear Filter' onClick={() => props.clearFilter()} />
-            <TypeFilter>Brands</TypeFilter>
+            <Button type='transparent' text='Xóa bộ lọc' onClick={() => props.clearFilter()} />
+            {/* <TypeFilter>Xuất sứ</TypeFilter>
             <Brands>
                 {props.brands.map((brand, idx) => {
                     return (
@@ -67,8 +65,8 @@ const Filter = (props) => {
                         />
                     );
                 })}
-            </Brands>
-            <TypeFilter>RAM</TypeFilter>
+            </Brands> */}
+            <TypeFilter>Thuốc cần kê toa</TypeFilter>
             <Ram>
                 <input
                     type='checkbox'
@@ -79,7 +77,7 @@ const Filter = (props) => {
                     onChange={() => targetRam('4GB')}
                 />
                 <label>
-                    <span>4GB</span>
+                    <span>Có</span>
                     <span></span>
                 </label>
             </Ram>
@@ -93,11 +91,11 @@ const Filter = (props) => {
                     onChange={() => targetRam('8GB')}
                 />
                 <label>
-                    <span>8GB</span>
+                    <span>Không</span>
                     <span></span>
                 </label>
             </Ram>
-            <Ram>
+            {/* <Ram>
                 <input
                     type='checkbox'
                     name='16gbram'
@@ -110,8 +108,8 @@ const Filter = (props) => {
                     <span>16GB</span>
                     <span></span>
                 </label>
-            </Ram>
-            <TypeFilter>Price</TypeFilter>
+            </Ram> */}
+            <TypeFilter>Giá tiền</TypeFilter>
             <Slider
                 style={{ width: '90%', margin: '0 5%' }}
                 getAriaLabel={() => 'Minimum distance'}
@@ -200,6 +198,7 @@ const Title = styled.p`
     margin-bottom: 10px;
 `;
 const Container = styled.div`
+    margin-top: 57px;
     width: 100%;
     padding: 10px;
     display: flex;
