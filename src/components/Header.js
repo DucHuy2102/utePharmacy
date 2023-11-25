@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getNumCart, numCartSelector } from '../store/reducers/numCartSlice';
 import { FaSearch } from 'react-icons/fa';
-// import './Header.css';
+import './Header.css';
 
 const Header = (props) => {
     const numCart = useSelector(numCartSelector);
