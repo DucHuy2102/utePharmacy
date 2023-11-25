@@ -42,7 +42,7 @@ const Header = (props) => {
                 collapseOnSelect
                 expand='lg'
                 variant='dark'
-                style={{ backgroundColor: '#1e72ee', fontSize: '18px' }}
+                style={{ backgroundColor: '#2167dd', fontSize: '18px' }}
             >
                 <Container>
                     <Navbar.Brand as={Link} to='/' className='d-flex flex-row align-items-center gap-2'>
@@ -105,10 +105,14 @@ const Header = (props) => {
                                 <UserIcon></UserIcon>
                             </Dropdown.Toggle>
 
-                            <Dropdown.Menu style={{ zIndex: '9999' }}>
+                            <Dropdown.Menu style={{ zIndex: '9999', border: '0.1px solid black' }}>
                                 {user ? (
                                     <>
-                                        <Dropdown.Item as={Link} to='/user'>
+                                        <Dropdown.Item
+                                            as={Link}
+                                            to='/user'
+                                            style={{ border: 'none', outline: 'none', height: '100%' }}
+                                        >
                                             Tài khoản của tôi
                                         </Dropdown.Item>
                                         <Dropdown.Divider />

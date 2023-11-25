@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-grid-system';
-// import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import Scrollbars from 'react-scrollbars-custom';
 import RowOfTable from './RowOfTable';
@@ -13,6 +12,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import './CartItem.css';
 
 const Cart = () => {
     const [name, setName] = useState('');
@@ -50,16 +50,18 @@ const Cart = () => {
     };
     const IsSure = () => {
         confirmAlert({
-            title: 'Bạn có chắc chắn muốn xóa !!!',
-            // message: 'Are you sure to delete !!!',
+            title: 'Xóa tất cả đơn hàng !',
+            // message: 'Xóa tất cả đơn hàng !!!',
             buttons: [
                 {
                     label: 'Đồng ý',
                     onClick: () => ClearAll(),
+                    className: 'btnYes',
                 },
                 {
                     label: 'Không',
                     onClick: () => console.log('Ignore delete all product'),
+                    className: 'btnNo',
                 },
             ],
         });
@@ -138,11 +140,7 @@ const Cart = () => {
                             </CloseResponesive>
                         </Row>
                         <Line />
-                        <Scrollbars
-                            // style={{ height: 350, marginTop: 30 }}
-                            style={Scrollbarstyled}
-                            noScrollX
-                        >
+                        <Scrollbars style={Scrollbarstyled} noScrollX>
                             {cart.length !== 0 ? (
                                 cart.map((product) => (
                                     <RowOfTable
@@ -152,7 +150,6 @@ const Cart = () => {
                                         total={total}
                                         setTotal={setTotal}
                                     />
-                                    // <RowOfTable product={product}/>
                                 ))
                             ) : (
                                 <NoItemInCart>( Không có sản phẩm trong giỏ hàng )</NoItemInCart>
@@ -163,7 +160,6 @@ const Cart = () => {
                                 <ButtonContinue onClick={() => navigate(-1)}>Trang chủ</ButtonContinue>
                             </Col>
                             <Col sm={6}>
-                                {/* <ButtonClear onClick={ClearAll}> */}
                                 <ButtonClear onClick={() => IsSure()}>Xóa giỏ hàng</ButtonClear>
                             </Col>
                         </Row>
