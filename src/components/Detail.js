@@ -164,10 +164,10 @@ const Detail = () => {
         await axios.post(`${process.env.REACT_APP_BACKEND_ROOT}/api/cart/addToCart.php`, data).then((response) => {
             console.log(response.data);
             if (response.data.message === 0) {
-                swal('Fail!', 'Add to cart fail !', 'error');
+                swal('Không thể thêm vào giỏ hàng!', 'Thêm không thành công !', 'error');
             } else if (response.data.message === 1) {
                 dispatch(addCart(product_id));
-                swal('Completely!', 'Add to cart success', 'success');
+                swal('Đã thêm vào giỏ hàng!', 'Thêm hoàn tất', 'success');
             }
         });
     };
@@ -335,15 +335,18 @@ const Detail = () => {
 
                                 <Button
                                     disabled={parseInt(product.amount) < 1}
-                                    style={{ borderRadius: '20px', padding: '6px 20px' }}
+                                    style={{
+                                        borderRadius: '20px',
+                                        padding: '6px 20px',
+                                    }}
                                     onClick={handleAddToCart}
                                 >
                                     {parseInt(product.amount) > 0 ? 'Thêm vào giỏ hàng' : 'Hết hàng'}
                                 </Button>
-                                <p style={{ margin: '0px 20px' }}>
+                                {/* <p style={{ margin: '0px 20px' }}>
                                     {parseInt(product.amount)}{' '}
                                     {parseInt(product.amount) > 1 ? 'sản phẩm hiện có' : 'còn sản phẩm'}
-                                </p>
+                                </p> */}
                             </div>
                         </div>
                     </TabContent>
@@ -418,7 +421,7 @@ const Detail = () => {
                     <div>
                         <img
                             alt='a sample pic'
-                            src='https://p1-ofp.static.pub/medias/bWFzdGVyfHJvb3R8MTE4OTg1fGltYWdlL2pwZWd8aDk0L2g0MC8xMTI1NjcyMTU3MTg3MC5qcGd8MzgzZTkxNWI3NDk1YzdhM2ZmY2ZiYjQ0MjNhMmQ5Y2MxMTdlOTYxNWY0YzdhN2ZhZjU4NzNkMjFhNmI5YzRhYQ/bWFzdGVyfH.jpg'
+                            src='https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00008273_zoladex_36mg_3783_6127_large_d3c4d52581.jpg'
                         ></img>
                     </div>
                 </InforDiv2>
@@ -429,7 +432,7 @@ const Detail = () => {
                     <div>
                         <img
                             alt='a sample pic'
-                            src='https://p1-ofp.static.pub/medias/bWFzdGVyfHJvb3R8MTY0NDc0fGltYWdlL2pwZWd8aDA3L2hkOS8xMTI1NjcyMTgwMTI0Ni5qcGd8ZjFjNTQwNGM1ODAyOTdmMDUyZDQ2NDdlN2E1YWE4Nzg3NmM5NjQ1YTEzODcxMjVjMGZjOWVlMTViODBmZDAwMw/bWFzdGVyfH.jpg'
+                            src='https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00000614_allerphast_180mg_4471_6361_large_d69336d518.jpg'
                         ></img>
                     </div>
                 </InforDiv2>
@@ -482,7 +485,7 @@ const Detail = () => {
                     <div>
                         <img
                             alt='a sample pic'
-                            src='https://p1-ofp.static.pub/medias/bWFzdGVyfHJvb3R8MTgyMDMyfGltYWdlL2pwZWd8aDNjL2hlOS8xMTEyMTUzMDAxMTY3OC5qcGd8ZjMxMmZjYWMyZjc1MjMzMGI4MTFlZmZmODI4MTg4NjNkNzBmZTdlOTdhYzI1NDYyMjFjZjc2YzY1MTNhOTI0MA/bWFzdGVyfH.jpg'
+                            src='https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00000614_allerphast_180mg_7132_6361_large_5b8a7a488b.jpg'
                         ></img>
                     </div>
                 </InforDiv2>

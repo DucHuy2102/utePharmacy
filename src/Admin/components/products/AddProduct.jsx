@@ -149,7 +149,7 @@ const AddProduct = () => {
     // handle add product
     const handleAddProduct = async () => {
         if (imagesAdd.length === 0) {
-            swal('At lease one image in additional image', '', 'info');
+            swal('Phải có ít nhất 1 ảnh', '', 'info');
             return;
         }
 
@@ -276,7 +276,7 @@ const AddProduct = () => {
                                                     onClick={onImageUpload}
                                                     {...dragProps}
                                                 >
-                                                    Click or Drop here
+                                                    Thêm ảnh
                                                 </button>
                                             )}
                                             &nbsp;
@@ -287,7 +287,7 @@ const AddProduct = () => {
                                                 <div key={index} className='image-item'>
                                                     <img src={image.data_url} alt='' width='400' />
                                                     <div className='image-item__btn-wrapper'>
-                                                        <button onClick={() => onImageUpdate(index)}>Update</button>
+                                                        <button onClick={() => onImageUpdate(index)}>Lưu</button>
                                                         {/* <button onClick={() => onImageRemove(index)}>
                               Remove
                             </button> */}

@@ -21,6 +21,10 @@ const Footer = () => {
                     </InforIcon>
                     <InforIcon>
                         <PersonIcon />
+                        <InforItem>Lưu Đặc Vũ - 20110044</InforItem>
+                    </InforIcon>
+                    <InforIcon>
+                        <PersonIcon />
                         <InforItem>Huỳnh Lê Huy - 20110493</InforItem>
                     </InforIcon>
                 </Infor>

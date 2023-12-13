@@ -21,6 +21,7 @@ import News from './components/News';
 
 function App() {
     const [user, setUser] = useState(null);
+
     useEffect(() => {
         const data = sessionStorage.getItem('user_id');
         if (data) {
@@ -44,13 +45,13 @@ function App() {
                         <Route path='' element={<HomeAdmin />} />
                     </Route>
 
+                    {/* for user */}
                     <Route path='/' element={<Home user={user} />} />
                     <Route path='login' element={<Login user={user} />} />
                     <Route path='cart' element={<Cart user={user} />} />
                     <Route path='checkout' element={<Checkout user={user} />} />
                     <Route path='news' element={<News />} />
                     <Route path='user' element={<User />} />
-                    {/* <Route path='self-care' element={<Selfcare />} /> */}
                     <Route path='detail/:product_id' element={<Detail user={user} />} />
                 </Routes>
             </BrowserRouter>

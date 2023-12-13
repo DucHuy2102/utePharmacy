@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { ordersSelector, getAllOrder } from '../store/reducers/ordersSlice';
-// import { MainContentWrap } from "./style";
 import { useEffect } from 'react';
+
 const MainContentWrap = styled.div`
     display: flex;
     /* margin-top: 50px; */
@@ -128,7 +128,6 @@ const CustomerName = styled.h4`
     font-size: 18px;
 `;
 
-// const Orders=styled.div``;
 const MainContent = () => {
     const navigate = useNavigate();
     const allOrder = useSelector(ordersSelector);
@@ -136,22 +135,21 @@ const MainContent = () => {
     useEffect(() => {
         dispatch(getAllOrder());
     }, [dispatch]);
-    //const allOrder = useSelector(ordersSelector);
     return (
         <MainContentWrap>
             <Orders>
                 <OrderHeader>
-                    <OrderHeaderTitle>Recent Orders</OrderHeaderTitle>
-                    <OrderHeaderBtn onClick={() => navigate('orders')}>View All</OrderHeaderBtn>
+                    <OrderHeaderTitle>Đơn hàng gần đây</OrderHeaderTitle>
+                    <OrderHeaderBtn onClick={() => navigate('orders')}>Xem tất cả</OrderHeaderBtn>
                 </OrderHeader>
                 <OrderContent>
                     <Table>
                         <tbody>
                             <Tr>
-                                <Th position='left'>Name</Th>
-                                <Th position='right'>Price</Th>
-                                <Th position='center'>Ship</Th>
-                                <Th position='right'>Status</Th>
+                                <Th position='left'>Tên khách hàng</Th>
+                                <Th position='right'>Giá bán</Th>
+                                <Th position='center'>Phí vận chuyển</Th>
+                                <Th position='right'>Tình trạng</Th>
                             </Tr>
 
                             {allOrder.map((order) => {
@@ -173,7 +171,7 @@ const MainContent = () => {
                 </OrderContent>
             </Orders>
             <Custommers>
-                <CustomerHeader>Recent Cusomer</CustomerHeader>
+                <CustomerHeader>Khách hàng gần đây</CustomerHeader>
                 <CustomerList>
                     {allOrder.slice(0, 5).map((order) => {
                         return (
@@ -181,7 +179,7 @@ const MainContent = () => {
                                 <CustomerImg src='https://res.cloudinary.com/dd8b69mls/image/upload/v1654857710/bmbahavxcxzrgkjrdrob.jpg'></CustomerImg>
                                 <CustomerRight>
                                     <CustomerName>{order.name}</CustomerName>
-                                    <CustomerCountry>Vietnam</CustomerCountry>
+                                    <CustomerCountry>Việt Nam</CustomerCountry>
                                 </CustomerRight>
                             </CustomerItem>
                         );

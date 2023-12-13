@@ -62,8 +62,8 @@ const CardBox = () => {
             <CardContainer>
                 <Card>
                     <CardLeft>
-                        <CardNumber>1,504</CardNumber>
-                        <CardTitle>Daily Views</CardTitle>
+                        <CardNumber>11,234</CardNumber>
+                        <CardTitle>Lượt truy cập/ngày</CardTitle>
                     </CardLeft>
                     <IconCard>
                         <FiEye />
@@ -72,8 +72,8 @@ const CardBox = () => {
 
                 <Card>
                     <CardLeft>
-                        <CardNumber>1,504</CardNumber>
-                        <CardTitle>Daily Views</CardTitle>
+                        <CardNumber>2,232</CardNumber>
+                        <CardTitle>Đơn hàng/ngày</CardTitle>
                     </CardLeft>
                     <IconCard>
                         <FiEye />
@@ -82,8 +82,8 @@ const CardBox = () => {
 
                 <Card>
                     <CardLeft>
-                        <CardNumber>1,504</CardNumber>
-                        <CardTitle>Daily Views</CardTitle>
+                        <CardNumber>1,077</CardNumber>
+                        <CardTitle>Tài khoản người d</CardTitle>
                     </CardLeft>
                     <IconCard>
                         <FiEye />
@@ -92,8 +92,8 @@ const CardBox = () => {
 
                 <Card>
                     <CardLeft>
-                        <CardNumber>1,504</CardNumber>
-                        <CardTitle>Daily Views</CardTitle>
+                        <CardNumber>11,100,707</CardNumber>
+                        <CardTitle>Doanh thu/ngày</CardTitle>
                     </CardLeft>
                     <IconCard>
                         <FiEye />
@@ -115,9 +115,6 @@ const CardBox = () => {
             >
                 <ResponsiveContainer width={'99%'} height={300}>
                     <LineChart
-                        // width={500}
-                        // width={700}
-                        // height={300}
                         data={data}
                         margin={{
                             top: 5,

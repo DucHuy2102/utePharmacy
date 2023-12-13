@@ -24,7 +24,7 @@ const Checkout = () => {
         swal('Completely!', 'Payment success', 'success');
         const data = {
             user_id: sessionStorage.getItem('user_id'),
-            state: 'Pending',
+            state: 'Đang xử lý',
             total_ship: 20.0,
             date: new Date().toISOString().slice(0, 10),
             username: name,
@@ -70,8 +70,9 @@ const Checkout = () => {
     return (
         <div>
             <Header />
-            <ContainerStyled>
-                <TitleShipping>Shipping Address</TitleShipping>
+
+            <ContainerStyled style={{ marginBottom: '20px' }}>
+                <TitleShipping>Thông tin giao hàng</TitleShipping>
                 <Container fluid>
                     <Row>
                         <Col lg={8}>
@@ -81,44 +82,45 @@ const Checkout = () => {
                                     <ContainField>
                                         <Key>
                                             <MdOutlineLocationOn size={25} color='#4272D0' />
-                                            <NameKey>Address:</NameKey>
+                                            <NameKey>Địa chỉ:</NameKey>
                                         </Key>
                                         <Value>{address}</Value>
                                     </ContainField>
                                     <ContainField>
                                         <Key>
                                             <BsPhoneVibrate size={23} color='#4272D0' />
-                                            <NameKey>Phone:</NameKey>
+                                            <NameKey>Số điện thoại:</NameKey>
                                         </Key>
                                         <Value>{phone}</Value>
                                     </ContainField>
                                     <ContainField>
                                         <Key>
                                             <BsPersonCircle size={21} color='#4272D0' />
-                                            <NameKey>Name:</NameKey>
+                                            <NameKey>Họ và tên:</NameKey>
                                         </Key>
                                         <Value>{name}</Value>
                                     </ContainField>
                                     <Line />
                                     <ContainerInput>
-                                        <NameInput>Enter discount code</NameInput>
+                                        <NameInput>Nhập mã giảm giá</NameInput>
                                         <Input type='text' />
                                     </ContainerInput>
-                                    <ButtonDiscount>Apply Discount</ButtonDiscount>
+                                    <ButtonDiscount>Sử dụng mã giảm giá</ButtonDiscount>
                                 </Col>
                                 <Col lg={6}>
                                     <ContainerInput>
-                                        <NameInput>Payment methods</NameInput>
+                                        <NameInput>Phương thức thanh toán</NameInput>
                                         <Selection id='cars' name='Bank' onChange={(e) => setCod(e.target.value)}>
-                                            <Option value='bank'>Bank</Option>
-                                            <Option value='delivery'>Payment on delivery</Option>
+                                            <Option value='bank'>Thẻ ngân hàng</Option>
+                                            <Option value='delivery'>Thanh toán khi nhận hàng</Option>
                                         </Selection>
                                     </ContainerInput>
                                     {cod === 'bank' && (
                                         <ContainerInput>
-                                            <NameInput>Bank</NameInput>
+                                            <NameInput>Ngân hàng</NameInput>
                                             <Selection id='cars' name='OCB'>
                                                 <Option value='OCB'>OCB</Option>
+                                                <Option value='OCB'>BIDV</Option>
                                                 <Option value='ACB'>ACB</Option>
                                                 <Option value='TPBank'>TPBank</Option>
                                                 <Option value='SeABank'>SeABank</Option>
@@ -130,39 +132,38 @@ const Checkout = () => {
                                     )}
                                     {cod === 'bank' && (
                                         <ContainerInput>
-                                            <NameInput>Card Number</NameInput>
+                                            <NameInput>Số tài khoản</NameInput>
                                             <Input type='text' />
                                         </ContainerInput>
                                     )}
                                     {cod === 'bank' && (
                                         <ContainerInput>
-                                            <NameInput>Name on Card</NameInput>
+                                            <NameInput>Tên chủ thẻ</NameInput>
                                             <Input type='text' />
                                         </ContainerInput>
                                     )}
                                     <Row>
                                         <Col xs={8.5}>
-                                            <Ship>Shipping</Ship>
+                                            <Ship>Phí vận chuyển</Ship>
                                         </Col>
                                         <Col xs={2.5}>
-                                            <ValueShip>{(20).toLocaleString()}</ValueShip>
-                                            {/* <ValueShip>{document.getElementById("name").value}</ValueShip> */}
+                                            <ValueShip>{(30000).toLocaleString()}VND</ValueShip>
                                         </Col>
                                     </Row>
                                     <Row>
                                         <Col md={7}>
                                             <ButtonPay onClick={() => onPay()}>
-                                                Pay $
-                                                {lstCart
+                                                Thanh toán
+                                                {/* {lstCart
                                                     .reduce((sum, product) => {
                                                         return sum + product.amount * product.price;
                                                     }, 0)
-                                                    .toFixed(2)}
+                                                    .toFixed(2)} */}
                                             </ButtonPay>
                                         </Col>
                                         <Col md={5}>
                                             <Link to='/cart'>
-                                                <ButtonBack>Back</ButtonBack>
+                                                <ButtonBack>Quay lại</ButtonBack>
                                             </Link>
                                         </Col>
                                     </Row>
@@ -171,7 +172,7 @@ const Checkout = () => {
                         </Col>
                         <Col lg={4}>
                             <ContainerSummary>
-                                <TitleSummary>Order Summary</TitleSummary>
+                                <TitleSummary>Tổng đơn hàng</TitleSummary>
                                 <br />
                                 <Line />
                                 <Scrollbars
@@ -190,11 +191,11 @@ const Checkout = () => {
                                                 <Col lg={8.5}>
                                                     <Describe>{product.name}</Describe>
                                                     <Row>
-                                                        <Col sm={4}>
-                                                            <QuanPrice>Qty: {product.amount}</QuanPrice>
+                                                        <Col sm={5}>
+                                                            <QuanPrice>Số lượng: {product.amount}</QuanPrice>
                                                         </Col>
-                                                        <Col sm={8}>
-                                                            <QuanPrice>Price: ${product.price}</QuanPrice>
+                                                        <Col sm={7}>
+                                                            <QuanPrice>Giá: {product.price}VND</QuanPrice>
                                                         </Col>
                                                     </Row>
                                                 </Col>
@@ -207,6 +208,7 @@ const Checkout = () => {
                     </Row>
                 </Container>
             </ContainerStyled>
+
             <Footer />
         </div>
     );

@@ -4,7 +4,7 @@
     private $host = 'localhost';
     private $username = 'root';
     private $password = '';
-    private $db_name = 'bkshop';
+    private $db_name = 'pharmacyute_database';
     private $conn;
 
     // DB Connect

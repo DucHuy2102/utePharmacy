@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 09, 2022 at 05:37 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th12 13, 2023 lúc 07:57 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,25 +18,23 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bkshop`
+-- Cơ sở dữ liệu: `pharmacyute_database`
 --
-DROP DATABASE IF EXISTS bkshop;
-CREATE DATABASE bkshop;
-USE bkshop;
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Cấu trúc bảng cho bảng `admin`
 --
 
 CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `admin`
+-- Đang đổ dữ liệu cho bảng `admin`
 --
 
 INSERT INTO `admin` (`admin_id`, `username`, `password`) VALUES
@@ -45,49 +43,32 @@ INSERT INTO `admin` (`admin_id`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Cấu trúc bảng cho bảng `cart`
 --
 
 CREATE TABLE `cart` (
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `cart`
+--
+
+INSERT INTO `cart` (`user_id`, `product_id`, `amount`) VALUES
+(1, 1, 10),
+(1, 2, 1),
+(1, 3, 2),
+(1, 4, 2),
+(6, 1, 6),
+(6, 2, 2),
+(6, 3, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `fName` varchar(255) NOT NULL,
-  `lName` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone` varchar(15) NOT NULL,
-  `birthday` date NOT NULL,
-  `url_avt` varchar(100) NOT NULL,
-  `isBlocked` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`user_id`, `username`, `password`, `fName`, `lName`, `email`, `phone`, `birthday`, `url_avt`, `isBlocked`) VALUES
-(1, 'tri', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Lê Cao Minh', 'Trí', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
-(2, 'dat', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Đào Xuân', 'Đạt', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
-(3, 'an', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Dư Văn', 'An', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
-(4, 'vinh', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Nguyễn Phúc', 'Vinh', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `comment`
+-- Cấu trúc bảng cho bảng `comment`
 --
 
 CREATE TABLE `comment` (
@@ -97,16 +78,16 @@ CREATE TABLE `comment` (
   `comment` varchar(500) NOT NULL,
   `rate` int(11) NOT NULL,
   `datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `comment`
+-- Đang đổ dữ liệu cho bảng `comment`
 --
 
 INSERT INTO `comment` (`id`, `product_id`, `user_id`, `comment`, `rate`, `datetime`) VALUES
-(1, 1, 1, ' giải pháp tản nhiệt mới Up-Down Air - tản nhiệt theo hai hướng khác nhau giúp hiệu suất tuần hoàn nhiệt nhanh hơn, tốt hơn.', 5, '2020-08-03 00:00:00'),
-(2, 1, 2, 'Thiết kế bắt mắt, sang trọng, máy gọn nhẹ. Pin sử dụng được lâu, sạc nhanh.', 5, '2020-08-03 00:00:00'),
-(3, 1, 3, 'PwNForCard', 5, '2020-07-27 00:00:00'),
+(1, 1, 1, 'Thuốc dùng tốt, giá rẻ hơn nhà thuốc 2k', 5, '2020-08-03 00:00:00'),
+(2, 1, 2, 'Thuốc thì ok mà nhân viên tư vấn cũng vui', 5, '2020-08-03 00:00:00'),
+(3, 1, 3, 'Nhà thuốc nhỏ mà có cái web xịn ghê\r\n', 5, '2020-07-27 00:00:00'),
 (4, 2, 4, 'tuy 16\" nhưng máy rất mỏn nhẹ, rất đáng đồng tiền', 5, '2020-07-08 00:00:00'),
 (5, 2, 1, 'màn hình hiển thị sắc nét, sống động', 5, '2020-07-15 00:00:00'),
 (6, 2, 2, 'thời gian sử dụng pin lâu', 5, '2020-07-15 00:00:00'),
@@ -173,12 +154,13 @@ INSERT INTO `comment` (`id`, `product_id`, `user_id`, `comment`, `rate`, `dateti
 (67, 27, 3, 'máy xài ok lắm , nhẹ ', 5, '2020-02-18 00:00:00'),
 (68, 27, 4, 'máy đẹp , mua cho em gái dùng khá thích , màu vàng gold nhìn sang lắm', 5, '2020-01-07 00:00:00'),
 (69, 28, 1, 'máy xài mượt các ứng dụng vp , bản lề mở thoải mái', 5, '2020-02-22 00:00:00'),
-(70, 29, 2, 'Tốt', 5, '2020-03-03 00:00:00');
+(70, 29, 2, 'Tốt', 5, '2020-03-03 00:00:00'),
+(78, 16, 6, 'Test ', 1, '2023-11-25 23:42:51');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
 CREATE TABLE `orders` (
@@ -190,13 +172,23 @@ CREATE TABLE `orders` (
   `username` varchar(255) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `address` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `user_id`, `state`, `total_ship`, `date`, `username`, `phone`, `address`) VALUES
+(3, 6, 'Cancelled', 20, '2023-12-12 21:20:16', 'Vuu', '0919123456', 'Dĩ An'),
+(5, 6, 'Pending', 20, '2023-11-27 10:48:11', 'Nguyễn Đức Huy', '0828203141', '01 Võ Văn Ngân'),
+(7, 6, 'Pending', 20, '2023-11-27 10:48:18', 'Nguyễn Đức Huy', '0828203141', '01 Võ Văn Ngân'),
+(9, 6, 'Pending', 20, '2023-11-27 10:58:36', 'Nguyễn Đức Huy', '0828203141', '01 Võ Văn Ngân'),
+(11, 1, 'Pending', 20, '2023-12-12 21:18:30', 'Alo', '091919191', 'Trà Vinh');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_item`
+-- Cấu trúc bảng cho bảng `order_item`
 --
 
 CREATE TABLE `order_item` (
@@ -204,17 +196,34 @@ CREATE TABLE `order_item` (
   `product_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `price` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `order_item`
+-- Đang đổ dữ liệu cho bảng `order_item`
 --
 
+INSERT INTO `order_item` (`order_id`, `product_id`, `amount`, `price`) VALUES
+(3, 1, 6, 21000),
+(3, 2, 2, 48000),
+(3, 3, 1, 80000),
+(5, 1, 6, 21000),
+(5, 2, 2, 48000),
+(5, 3, 1, 80000),
+(7, 1, 6, 21000),
+(7, 2, 2, 48000),
+(7, 3, 1, 80000),
+(9, 1, 6, 21000),
+(9, 2, 2, 48000),
+(9, 3, 1, 80000),
+(11, 1, 10, 21000),
+(11, 2, 1, 48000),
+(11, 3, 2, 80000),
+(11, 4, 2, 47000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
@@ -238,74 +247,74 @@ CREATE TABLE `product` (
   `num_reviewer` int(11) NOT NULL,
   `img_cover` varchar(255) NOT NULL,
   `isDisabled` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `product`
+-- Đang đổ dữ liệu cho bảng `product`
 --
 
 INSERT INTO `product` (`product_id`, `name`, `url`, `product_code`, `brand`, `cpu`, `ram`, `gpu`, `os`, `old_price`, `price`, `screen`, `size`, `battery`, `amount`, `description`, `rating`, `num_reviewer`, `img_cover`, `isDisabled`) VALUES
-(1, 'Laptop Acer Nitro 5 Eagle AN515-57-54MV', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-14zd90p-g-ax51a5-i5-1135g7', '14ZD90P-G.AX51A5', 'ACER', 'Intel Core i5-11400H 2.7GHz up to 4.5GHz 12MB', '4GB DDR4', 'NVIDIA GeForce RTX™ 3050 4GB GDDR6', 'Windows 11 Home', 34.99, 22.49, ' 15.6;#039; FHD (1920 x 1080) IPS, 144Hz, Anti-Glare, 45% NTSC, 65% sRGB', '363.4 x 255 x 23.9 mm', 72, 10, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 5, 'https://product.hstatic.net/1000233206/product/lg-gram-2021-14zd90p-g-ax51a5_a2e71f3575f543d8940d22d64592e887_master.png', 0),
-(2, 'Laptop LG Gram 2021 16Z90P-G.AH73A5', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-16z90p-g-ah73a5-i7-1165g7', '16Z90P-G.AH73A5', 'LG', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', 'Windows 10 Home', 49.99, 40.89, '16\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '355.9 x 243.4 x 16.8 mm', 80, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_16z90p-g.ah73a5_1022f07220d34034b8ca6da3ca669dea_master.png', 0),
-(3, 'Laptop LG Gram 2021 17ZD90P-G.AX71A5', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-17zd90p-g-ax71a5-i7-1165g7', '17ZD90P-G.AX71A5', 'LG', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', NULL, 44.99, 39.99, '17\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '380.2 x 260.1 x 17.8 mm', 80, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_17zd90p-g.ax71a5_40aab526d08649d89764e9934615febd_master.png', 0),
-(4, 'Laptop Acer Nitro 5 Eagle AN515-57-54MV', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-eagle-an515-57-54mv-i5-11400h', 'AN515-57-54MV', 'ACER', 'Intel Core i5-11400H 2.7GHz up to 4.5GHz 12MB', '4GB DDR4', 'NVIDIA GeForce RTX™ 3050 4GB GDDR6', 'Windows 11 Home', 26.49, 22.49, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Anti-Glare, 45% NTSC, 65% sRGB', '363.4 x 255 x 23.9 mm', 4, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://product.hstatic.net/1000233206/product/acer-nitro-5-eagle-an515-57-54mv-i5-11400h_b20e2a1a86f04fd7ae3921d1a60b1edd_master.png', 0),
-(5, 'Laptop Acer Nitro 5 Eagle AN515-57-720A', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-eagle-an515-57-720a-i7-11800h', 'AN515-57-720A', 'ACER', 'Intel Core i7-11800H 2.3GHz up to 4.6GHz 24MB', '4GB DDR4', 'NVIDIA GeForce RTX 3050Ti 4GB GDDR6', 'Windows 11 Home', 30.49, 26.99, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Anti-Glare, 45% NTSC, 65% sRGB', '363.4 x 255 x 23.9 mm', 4, 0, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://product.hstatic.net/1000233206/product/acer-nitro-5-eagle-an515-57-720a_ee7399d9507a49219d3da0f9bc3efa84_master.png', 0),
-(6, 'Laptop Acer Nitro 5 Eagle AN515-57-5669', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-eagle-an515-57-5669-i5-11400h', 'AN515-57-5669', 'ACER', 'Intel Core i5-11400H 2.7GHz up to 4.5GHz 12MB', '4GB DDR4', 'NVIDIA® GeForce GTX™ 1650 4GB GDDR6', 'Windows 11 Home', 23.99, 20.29, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Anti-Glare, 63% sRGB', '363.4 x 255 x 23.9 mm', 4, 3, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 6, 'https://product.hstatic.net/1000233206/product/acer-nitro-5-eagle-an515-57-5669-i5-11400h_c8e0d7d294b14d64aef3bdbeef0f5eb0_master.png', 0),
-(7, 'Laptop Acer Nitro 5 AN515-45-R6EV', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-an515-45-r6ev-r5-5600h', 'AN515-45-R6EV', 'ACER', 'AMD Ryzen 5 5600H 3.3GHz up to 4.2GHz 16MB', '4GB DDR4', 'NVIDIA GeForce GTX 1650 4GB GDDR6 + AMD Radeon™ Graphics', 'Windows 11 Home', 23.99, 19.99, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Acer ComfyViewTM LED-backlit TFT LCD, 65% sRGB', '363.4 x 255 x 23.9 mm', 4, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 11, 'https://product.hstatic.net/1000233206/product/acer-nitro-5-an515-45-r6ev-r5-5600h_081c5fd05db540dfbfaa4ff3d93c7563_master.png', 0),
-(8, 'Laptop MSI Bravo 15 B5DD-276VN', 'https://hangchinhhieu.vn/products/laptop-msi-bravo-15-b5dd-276vn-r5-5600h', 'Bravo 15 B5DD-276VN', 'MSI', 'AMD Ryzen 5 5600H 3.3GHz up to 4.2GHz 16MB', '4GB DDR4', 'AMD Radeon™ RX 5500M 4GB GDDR6 + AMD Radeon™ Graphics', 'Windows 11 Home', 22.49, 17.79, '15.6\" FHD (1920 x 1080) IPS, 60Hz, Thin Bezel, Anti-Glare with 45% NTSC', '359 x 259 x 24.95 mm', 3, 1, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://product.hstatic.net/1000233206/product/msi-bravo-15-b5dd-276vn-r5-5600h_b1f030f36782439e8c7111b0358e695d_master.png', 0),
-(9, 'Laptop HP Victus 16-e0177AX', 'https://hangchinhhieu.vn/products/laptop-hp-victus-16-e0177ax-4r0u9pa-r5-5600h', '4R0U9PA', 'HP', 'AMD Ryzen 5 5600H 3.3GHz up to 4.2GHz 16MB', '4GB DDR4', 'NVIDIA GeForce GTX 1650 4GB GDDR6', 'Windows 11 Home', 22.99, 20.49, '16.1\" FHD (1920 x 1080), 144 Hz, IPS, micro-edge, anti-glare, 250 nits, 45% NTSC', '37 x 26 x 2,35 cm', 4, 2, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 4.5, 4, 'https://product.hstatic.net/1000233206/product/hp-victus-16-e0177ax-4r0u9pa_ee1239f3c6ab4d768fe53fe30262aab5_master.png', 0),
-(10, 'Laptop LG Gram 2021 16ZD90P-G.AX54A5', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-16zd90p-g-ax54a5-i5-1135g7', '16ZD90P-G.AX54A5', 'LG', 'Intel Core i5-1135G7 2.4GHz up to 4.2GHz 8MB', '8GB (4GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', NULL, 39.99, 36.99, '16\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '355.9 x 243.4 x 16.8 mm', 80, 0, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 2, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_16zd90p-g.ax54a5_a6f0d976a3404efcb3074deef72e42da_master.png', 0),
-(11, 'Laptop LG Gram 2021 17Z90P-G.AH76A5', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-17z90p-g-ah76a5-i7-1165g7', '17Z90P-G.AH76A5', 'LG', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics, ', 'Windows 10 Home', 52.99, 43.69, '17\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '380.2 x 260.1 x 17.8 mm', 80, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_17z90p-g.ah76a5_d3ed2a82c16b40dba4e6bb6f1ba16680_master.png', 0),
-(12, 'Laptop LG Gram 2021 17Z90P-G.AH78A5', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-17z90p-g-ah78a5-i7-1165g7', '17Z90P-G.AH78A5', 'LG', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics, ', 'Windows 10 Home', 54.99, 46.89, '17\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '380.2 x 260.1 x 17.8 mm', 80, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_17z90p-g.ah78a5_380b5307c0ec4c00880473f1008bc26c_master.png', 0),
-(13, 'Laptop LG Gram 2021 14Z90P-G.AH75A5', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-14z90p-g-ah75a5-i7-1165g7', 'LG Gram 14Z90P-G.AH75A5', 'LG', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', 'Windows 10 Home', 47.99, 39.99, '14\" WUXGA (1920x1200), 16:10, IPS, DCI-P3 99%', '313.4 x 215.2 x 16.8 mm', 72, 0, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 6, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_14z90p-g.ah75a5_65b9a5140ca6490db2e77217f0ee142e_master.png', 0),
-(14, 'Laptop LG Gram 2021 16Z90P-G.AH75A5', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-16z90p-g-ah75a5-i7-1165g7', '16Z90P-G.AH75A5', 'LG', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', 'Windows 10 Home', 50.99, 42.89, '16\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '355.9 x 243.4 x 16.8 mm', 80, 0, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_16z90p-g.ah75a5_2c4cec86ac4b4970910719e71b8440ec_master.png', 0),
-(15, 'Laptop LG Gram 2021 14ZD90P-G.AX56A5', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-14zd90p-g-ax56a5-i5-1135g7', '14ZD90P-G.AX56A5', 'LG', 'Intel Core i5-1135G7 2.4GHz up to 4.2GHz 8MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', 'FreeDos', 37.99, 34.49, '14\" WUXGA (1920x1200), 16:10, IPS, DCI-P3 99%', '313.4 x 215.2 x 16.8 mm', 72, 1, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://product.hstatic.net/1000233206/product/lg-gram-2021-14zd90p-g-ax56a5_514e3b112baa48c88bf7a25c65dec831_master.png', 0),
-(16, 'Laptop ASUS ZenBook Flip 13 UX363EA-HP726W', 'https://hangchinhhieu.vn/products/laptop-asus-zenbook-flip-13-ux363ea-hp726w-i5-1135g7', 'UX363EA-HP726W', 'ASUS', 'Intel Core i5-1135G7 2.4GHz up to 4.2GHz 8MB', '8GB LPDDR4X on board', 'Intel Iris Xe Graphics', 'Windows 11 Home', 27.99, 23.69, '13.3\" OLED FHD (1920 x 1080) 16:9 aspect ratio, 0.2ms response time, 550nits peak brightness, ', '30.5 x 21.1 x 1.19 ~ 1.39 (cm)', 0, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://bizweb.dktcdn.net/thumb/grande/100/372/934/products/asus-zenbook-flip-ux363ea-20317cf6-3abd-43ec-9689-43c9424036e7.jpg', 0),
-(17, 'Laptop Acer Nitro 5 Eagle AN515-57-71VV', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-eagle-an515-57-71vv-i7-11800h', 'AN515-57-71VV', 'ACER', 'Intel Core i7-11800H 2.3GHz up to 4.6GHz 24MB', '4GB DDR4', 'NVIDIA GeForce RTX 3050 4GB GDDR6', 'Windows 11 Home', 28.99, 25.49, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Anti-Glare, 45% NTSC, 65% sRGB', '363.4 x 255 x 23.9 mm', 4, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 4, 'https://product.hstatic.net/1000233206/product/acer-nitro-5-eagle-an515-57-71vv_4671e13d89574fb99e37db9be1fdd633_master.png', 0),
-(18, 'Laptop HP Victus 16-d0204TX', 'https://hangchinhhieu.vn/products/laptop-hp-victus-16-d0204tx-4r0u5pa-i5-11400h', '4R0U5PA', 'HP', 'Intel Core i5-11400H 2.7GHz up to 4.5GHz 12MB', '4GB DDR4', 'NVIDIA GeForce RTX 3050 4GB GDDR6', 'Windows 11 Home', 26.99, 24.49, '16.1\" FHD (1920 x 1080), 144Hz, IPS, micro-edge, Anti-Glare, 250nits, 45% NTSC', '37 x 26 x 2,35 cm', 4, 2, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://product.hstatic.net/1000233206/product/hp-victus-16-d0204tx-4r0u5pa-i5-11400h_db7305379f8341beb100cab8edc07f0d_master.png', 0),
-(19, 'Laptop HP Victus 16-e0175AX', 'https://hangchinhhieu.vn/products/laptop-hp-victus-16-e0175ax-4r0u8pa-r5-5600h', '4R0U8PA', 'HP', 'AMD Ryzen 5 5600H 3.3GHz up to 4.2GHz 16MB', '4GB DDR4', 'NVIDIA GeForce RTX 3050 4GB GDDR6', 'Windows 11 Home', 24.49, 20.99, '16.1\" FHD (1920 x 1080), 144 Hz, IPS, micro-edge, anti-glare, 250 nits, 45% NTSC', '37 x 26 x 2,35 cm', 4, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 2, 'https://product.hstatic.net/1000233206/product/hp-victus-16-e0175ax-4r0u8pa_48d317e08aea4bd195fe9b0cf09b6610_master.png', 0),
-(20, 'Laptop HP Victus 16-e0170AX', 'https://hangchinhhieu.vn/products/laptop-hp-victus-16-e0170ax-4r0u7pa-r7-5800h', '4R0U7PA', 'HP', 'AMD Ryzen 7 5800H 3.2GHz up to 4.4GHz 16MB', '4GB DDR4', 'NVIDIA® GeForce RTX™ 3050 4GB GDDR6', 'Windows 11 Home', 28.19, 25.99, '16.1\" FHD (1920 x 1080), 144Hz, IPS, micro-edge, Anti-Glare, 250nits, 45% NTSC', '37 x 26 x 2,35 cm', 4, 5, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://product.hstatic.net/1000233206/product/hp-victus-16-e0170ax-4r0u7pa-r7-5800h_cfd6622f3789416688233bd66f793fbc_master.png', 0),
-(21, 'Laptop ASUS ZenBook 14X OLED UM5401QA-KN209W', 'https://hangchinhhieu.vn/products/laptop-asus-zenbook-14x-oled-um5401qa-kn209w-r5-5600h', 'UM5401QA-KN209W', 'ASUS', 'AMD Ryzen 5 5600H 3.3GHz up to 4.2GHz 16MB', '8GB LPDDR4X 4267MHz', 'AMD Radeon™ Graphics', 'Windows 11 Home', 27.99, 23.99, '14\" 2.8K (2880 x 1800) OLED 16:10 aspect ratio, LED Backlit, 0.2ms response time, 90Hz refresh rate, 550nits peak brightness, 100% DCI-P3 color gamut, 1,000,000:1, VESA CERTIFIED Display HDR True Black 500, 1.07 billion colors, PANTONE Validated, Glossy d', '31.12 x 22.11 x 1.59 (cm)', 3, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://product.hstatic.net/1000233206/product/asus-zenbook-14x-oled-um5401qa-kn209w-r5-5600h_a7350e4f7647402bbd95cb12c1543ac8_master.png', 0),
-(22, 'Laptop Gigabyte G7 MD-71S1123SO', 'https://hangchinhhieu.vn/products/laptop-gigabyte-g7-md-71s1123so-i7-11800h', 'G7 MD-71S1123SO', 'GIGABYTE', 'Intel Core i7-11800H 2.3GHz up to 4.6GHz 24MB', '4GB DDR4', 'NVIDIA GeForce RTX 3050Ti 4GB GDDR6 Boost Clock 1500 MHz, Maximum Graphics Power 75 W', 'Windows 11 Home', 31.99, 29.99, '17.3\" FHD (1920 x 1080) IPS, Anti-Glare with 72% NTSC, 100% sRGB, 144Hz, 3ms, 300nits', '395 x 262 x 25.9 (mm)', 4, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://product.hstatic.net/1000233206/product/gigabyte-g7-md-71s1123so-i7-11800h_cb0ad385960c47be8628323b89f0c9f9_master.png', 0),
-(23, 'Laptop Acer Aspire 7 A715-42G-R4XX', 'https://hangchinhhieu.vn/products/laptop-acer-aspire-7-a715-42g-r4xx-r5-5500u', 'A715-42G-R4XX', 'ACER', 'AMD Ryzen 5-5500U 2.1GHz up to 4.0GHz 8MB', '4GB DDR4', 'NVIDIA GeForce GTX 1650 4GB GDDR6 + AMD Radeon™ Graphics', 'Windows 11 Home', 19.99, 16.99, '15.6\" FHD (1920 x 1080) IPS 60Hz SlimBezel, Acer ComfyView™ IPS LED LCD', '395 x 262 x 25.9 (mm)', 4, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://product.hstatic.net/1000233206/product/acer-aspire-7-a715-42g-r4xx-1_1f63633eb8a048cf817f5f5c7e5a1790_master.png', 0),
-(24, 'Laptop Acer Nitro 5 Tiger AN515-58-52SP', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-tiger-an515-58-52sp-i5-12500h', 'AN515-58-52SP', 'ACER', 'Intel Core i5-12500H 3.3GHz up to 4.5GHz 18MB', '4GB DDR4', 'NVIDIA GeForce RTX™ 3050 4GB GDDR6', 'Windows 11 Home', 27.99, 25.99, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Acer ComfyView LED-backlit TFT LCD, SlimBezel', '360.4 x 271.09 x 25.9 mm', 4, 3, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 14, 'https://product.hstatic.net/1000233206/product/acer-nitro-5-tiger-an515-58-52sp-i5-12500h_21eec226f57c41a7865fdc18004a57c8_master.png', 0),
-(25, 'Laptop ASUS TUF Dash F15 FX516PM-HN002W', 'https://hangchinhhieu.vn/products/laptop-asus-tuf-dash-f15-fx516pm-hn002w-i7-11370h', 'FX516PM-HN002W', 'ASUS', 'Intel Core i7-11370H 3.0GHz up to 4.8GHz 12MB', '4GB DDR4', 'NVIDIA GeForce  RTX™ 3060 6GB GDDR6 With ROG Boost up to 1525MHz at 80W (85W with Dynamic Boost)', 'Windows 11 Home', 32.99, 29.99, '15.6\" FHD (1920 x 1080) 16:9, anti-glare display, 62.5% sRGB, 144Hz, IPS, Adaptive-Sync', '36.0 x 25.2 x 1.99 cm', 4, 2, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 2, 'https://product.hstatic.net/1000233206/product/asus-tuf-dash-f15-fx516pm-hn002w_0f64729a570f4c91a8dc493c9aa264c7_master.png', 0),
-(26, 'Laptop Acer Aspire Vero AV15-51R-541C', 'https://hangchinhhieu.vn/products/laptop-acer-aspire-vero-av15-51r-541c-i5-1155g7', 'AV15-51R-541C', 'ACER', 'Intel Core i5-1155G7 2.5GHz up to 4.5GHz 8MB', '4GB DDR4', 'Intel Iris Xe Graphics', 'Windows 11 Home', 99.99, 19.99, '14\" FHD (1920 x 1080) IPS, SlimBezel PCR, ComfyView™ LCD', '363.4 x 238.5 x 17.9 (mm)', 3, 0, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://product.hstatic.net/1000233206/product/acer_aspire_vero_phien_ban_national_geographic_av15-51r-541c_64382f97d7604e02a5cbb3c5d5dc8464_master.png', 0),
-(27, 'Laptop Acer Aspire 5 A514-54-59QK', 'https://hangchinhhieu.vn/products/laptop-acer-aspire-5-a514-54-59qk-i5-1135g7', 'A514-54-59QK', 'ACER', 'Intel Core i5-1135G7 2.4GHz up to 4.2GHz 8MB', '4GB DDR4', 'Intel Iris Xe Graphics', 'Windows 11 Home', 99.99, 0, '14\" FHD (1920 x 1080) IPS, Acer ComfyView LCD', '328 x 233 x 17.95 (mm)', 3, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 2, 'https://product.hstatic.net/1000233206/product/acer-aspire-5-a514-54-59qk-i5-1135g7_8aabaa1c8fd34b24b85b2d275f4d55a5_master.png', 0),
-(28, 'Laptop Acer Aspire 3 A315-56-38B1', 'https://hangchinhhieu.vn/products/laptop-acer-aspire-3-a315-56-38b1-i3-1005g1', 'A315-56-38B1', 'ACER', 'Intel Core i3-1005G1 1.2GHz up to 3.4GHz 4MB', '4GB DDR4', 'Intel UHD Graphics', 'Windows 11 Home', 12.99, 10.99, '15.6\" FHD (1920 x 1080) Acer ComfyView LCD, Anti-Glare', '363 x 247.5 x 19.9 (mm)', 2, 5, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://product.hstatic.net/1000233206/product/acer-aspire-3-a315-56-38b1-i3-1005g1_8381143191f9431ba8eb33bf3887833b_master.png', 0),
-(29, 'Laptop ASUS TUF Gaming F15 FX506LH-HN188W', 'https://hangchinhhieu.vn/products/laptop-asus-tuf-gaming-f15-fx506lh-hn188w-i5-10300h', 'FX506LH-HN188W', 'ASUS', 'Intel Core i5-10300H 2.5GHz up to 4.5GHz 8MB', '4GB DDR4', 'NVIDIA GeForce GTX 1650 4GB GDDR6 + Intel® UHD Graphics', 'Windows 11 Home', 21.99, 18.99, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Wide View, 250nits, Narrow Bezel, Non-Glare with 45% NTSC, 63% sRGB', '35.9 x 25.6 x 2.47 ~ 2.49 cm', 3, 3, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://product.hstatic.net/1000233206/product/asus-tuf-gaming-f15-fx506lh-hn188w-i5-10300h_7b032cec13484888b599410a3cc8b3c7_master.png', 0),
-(30, 'Laptop Acer TravelMate B3 TMB311-31-C2HB', 'https://hangchinhhieu.vn/products/laptop-acer-travelmate-b3-tmb311-31-c2hb-c-n4020', 'TMB311-31-C2HB', 'ACER', 'Intel® Celeron® C-N4020 1.1GHz up to 2.8GHz 4MB', '4GB DDR4 2400MHz Onboard', 'Intel® UHD Graphics 605', 'Windows 11 Home', 9.99, 7.99, '11.6\" HD (1366 x 768) Acer ComfyView LED-backlit TFT LCD', '395 x 262 x 25.9 (mm)', 3, 3, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://product.hstatic.net/1000233206/product/acer-travelmate-b3-tmb311-31-c2hb_0982a0fd828f4400b61fe5d86967e9e1_master.png', 0),
-(32, 'test', 'tesst', 'test', 'test', 'test', 'test', 'test', 'test', 10, 10, 'test', 'test', 1, 1, 'test', 5, 10, 'test', 0);
+(1, 'Thuốc Zoladex 3.6mg AstraZeneca kiểm soát ung thư tiền liệt tuyến', 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00008273_zoladex_36mg_3783_6127_large_d3c4d52581.jpg', '14ZD90P-G.AX51A5', 'Anh', 'Intel Core i5-11400H 2.7GHz up to 4.5GHz 12MB', '4GB DDR4', 'NVIDIA GeForce RTX™ 3050 4GB GDDR6', 'Windows 11 Home', 24000, 21000, ' 15.6;#039; FHD (1920 x 1080) IPS, 144Hz, Anti-Glare, 45% NTSC, 65% sRGB', '363.4 x 255 x 23.9 mm', 72, -24, 'Bộ xương là bộ phận quan trọng trong cấu trúc của cơ thể, tham gia vào các vận động của các bộ phận, giúp các chức năng vận động được phối hợp nhịp nhàng và linh hoạt. Xương giúp bảo vệ và hỗ trợ cho tim, não cũng như đảm bảo các bộ phận khác trong cơ thể không bị tổn thương.', 5, 5, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00008273_zoladex_36mg_3783_6127_large_d3c4d52581.jpg', 0),
+(2, 'Thuốc Clorpheniramin 4mg DHG hỗ trợ điều trị viêm mũi dị ứng, mày đay (10 vỉ x 20 viên)', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-16z90p-g-ah73a5-i7-1165g7', '16Z90P-G.AH73A5', 'LG', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', 'Windows 10 Home', 55000, 48000, '16\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '355.9 x 243.4 x 16.8 mm', 80, -5, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00001954_clorpheniramin_4_200v_6315_634e_large_7ee34183b3.jpg', 0),
+(3, 'Thuốc Cetirizin 10mg Trường Thọ trị ngứa ngoài da do dị ứng (10 vỉ x 10 viên)', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-17zd90p-g-ax71a5-i7-1165g7', '17ZD90P-G.AX71A5', 'LG', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', NULL, 10000, 80000, '17\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '380.2 x 260.1 x 17.8 mm', 80, -2, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00033571_cetirizin_10mg_truong_tho_10x10_7980_622e_large_7b5a214e24.jpg', 0),
+(4, 'Thuốc Deslotid OPV điều trị viêm mũi dị ứng (30ml)', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-eagle-an515-57-54mv-i5-11400h', 'AN515-57-54MV', 'Việt Nam', 'Intel Core i5-11400H 2.7GHz up to 4.5GHz 12MB', '4GB DDR4', 'NVIDIA GeForce RTX™ 3050 4GB GDDR6', 'Windows 11 Home', 50000, 47000, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Anti-Glare, 45% NTSC, 65% sRGB', '363.4 x 255 x 23.9 mm', 4, 2, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00002353_deslotid_7075_624f_large_f35423108b.jpg', 0),
+(5, 'Thuốc Cetirizin 10mg Trường Thọ trị ngứa ngoài da do dị ứng (10 vỉ x 10 viên)', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-eagle-an515-57-720a-i7-11800h', 'AN515-57-720A', 'Việt Nam', 'Intel Core i7-11800H 2.3GHz up to 4.6GHz 24MB', '4GB DDR4', 'NVIDIA GeForce RTX 3050Ti 4GB GDDR6', 'Windows 11 Home', 12000, 10000, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Anti-Glare, 45% NTSC, 65% sRGB', '363.4 x 255 x 23.9 mm', 4, 0, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00033571_cetirizin_10mg_truong_tho_10x10_7980_622e_large_7b5a214e24.jpg', 0),
+(6, 'Thuốc Clorpheniramin 4mg Khánh Hòa điều trị dị ứng da & dị ứng đường hô hấp (200 viên)', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-eagle-an515-57-5669-i5-11400h', 'AN515-57-5669', 'ACER', 'Intel Core i5-11400H 2.7GHz up to 4.5GHz 12MB', '4GB DDR4', 'NVIDIA® GeForce GTX™ 1650 4GB GDDR6', 'Windows 11 Home', 32000, 30000, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Anti-Glare, 63% sRGB', '363.4 x 255 x 23.9 mm', 4, 3, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 6, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00033509_clorpheniramin_4mg_khanh_hoa_10x20_7916_621e_large_ab09a106d1.jpg', 0),
+(7, 'Thuốc Allerphast 180mg Mebiphar điều trị viêm mũi dị ứng theo mùa', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-an515-45-r6ev-r5-5600h', 'AN515-45-R6EV', 'Việt Nam', 'AMD Ryzen 5 5600H 3.3GHz up to 4.2GHz 16MB', '4GB DDR4', 'NVIDIA GeForce GTX 1650 4GB GDDR6 + AMD Radeon™ Graphics', 'Windows 11 Home', 12000, 10000, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Acer ComfyViewTM LED-backlit TFT LCD, 65% sRGB', '363.4 x 255 x 23.9 mm', 4, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 11, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00000614_allerphast_180mg_4471_6361_large_d69336d518.jpg', 0),
+(8, 'Viên nén bao phim Telfast BD 60mg Sanofi giảm hiệu quả triệu chứng dị ứng (3 vỉ x 10 viên)', 'https://hangchinhhieu.vn/products/laptop-msi-bravo-15-b5dd-276vn-r5-5600h', 'Bravo 15 B5DD-276VN', 'Việt Nam', 'AMD Ryzen 5 5600H 3.3GHz up to 4.2GHz 16MB', '4GB DDR4', 'AMD Radeon™ RX 5500M 4GB GDDR6 + AMD Radeon™ Graphics', 'Windows 11 Home', 21000, 20000, '15.6\" FHD (1920 x 1080) IPS, 60Hz, Thin Bezel, Anti-Glare with 45% NTSC', '359 x 259 x 24.95 mm', 3, 1, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/IMG_1171_3b15756371.jpg', 0),
+(9, 'Thuốc Setbozi Stick 2.5mg giảm viêm mũi dị ứng (20 ống x 5ml)', 'https://hangchinhhieu.vn/products/laptop-hp-victus-16-e0177ax-4r0u9pa-r5-5600h', '4R0U9PA', 'Việt Nam', 'AMD Ryzen 5 5600H 3.3GHz up to 4.2GHz 16MB', '4GB DDR4', 'NVIDIA GeForce GTX 1650 4GB GDDR6', 'Windows 11 Home', 34000, 30000, '16.1\" FHD (1920 x 1080), 144 Hz, IPS, micro-edge, anti-glare, 250 nits, 45% NTSC', '37 x 26 x 2,35 cm', 4, 2, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 4.5, 4, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00345833_setbozi_stick_25mg_phuong_dong_20_ong_x_5ml_9920_625e_large_8d9984b1cf.jpg', 0),
+(10, 'Thuốc Fexofenadin 120-HV US Pharma USA điều trị viêm mũi dị ứng, mày đay (100 viên)', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-16zd90p-g-ax54a5-i5-1135g7', '16ZD90P-G.AX54A5', 'Mỹ', 'Intel Core i5-1135G7 2.4GHz up to 4.2GHz 8MB', '8GB (4GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', NULL, 42000, 28000, '16\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '355.9 x 243.4 x 16.8 mm', 80, 0, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 2, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00009847_fexofenadin_120_9981_62a6_large_ed1d3f0fcd.jpg', 0),
+(11, 'Thuốc Jewell 30mg Đạt Vi Phú điều trị các đợt trầm cảm nặng (4 vỉ x 7 viên)', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-17z90p-g-ah76a5-i7-1165g7', '17Z90P-G.AH76A5', 'Việt Nam', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics, ', 'Windows 10 Home', 12000, 30000, '17\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '380.2 x 260.1 x 17.8 mm', 80, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/IMG_5793_a228f8081e.jpg', 0),
+(12, 'Thuốc Clorpheniramin 4mg DHG hỗ trợ điều trị viêm mũi dị ứng, mày đay (10 vỉ x 20 viên)', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-17z90p-g-ah78a5-i7-1165g7', '17Z90P-G.AH78A5', 'Việt Nam', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics, ', 'Windows 10 Home', 32000, 29000, '17\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '380.2 x 260.1 x 17.8 mm', 80, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00001954_clorpheniramin_4_200v_6315_634e_large_7ee34183b3.jpg', 0),
+(13, 'Thuốc Fefasdin 60 Khapharco điều trị viêm mũi dị ứng, mày đay (10 vỉ x 10 viên)', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-14z90p-g-ah75a5-i7-1165g7', 'LG Gram 14Z90P-G.AH75A5', 'Việt Nam', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', 'Windows 10 Home', 9000, 8000, '14\" WUXGA (1920x1200), 16:10, IPS, DCI-P3 99%', '313.4 x 215.2 x 16.8 mm', 72, 0, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 6, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00028530_fefasdin_60_khapharco_10x10_5268_5fa2_large_3e92f83e0a.JPG', 0),
+(14, 'Thuốc Acetab Extra Agimexpharm giúp giảm đau, hạ sốt (10 vỉ x 10 viên)', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-16z90p-g-ah75a5-i7-1165g7', '16Z90P-G.AH75A5', 'Mỹ', 'Intel Core i7-1165G7 2.8GHz up to 4.7GHz 12MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', 'Windows 10 Home', 33000, 29000, '16\" WQXGA (2560 x 1600), 16:10, IPS, DCI-P3 99%', '355.9 x 243.4 x 16.8 mm', 80, 0, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00033094_acetab_extra_agimexpharm_10x10_8890_61c9_large_198442652a.jpg', 0),
+(15, 'Thuốc Paracetamol Stada 500mg hỗ trợ giảm đau và hạ sốt (10 vỉ x 10 viên)', 'https://hangchinhhieu.vn/products/laptop-lg-gram-2021-14zd90p-g-ax56a5-i5-1135g7', '14ZD90P-G.AX56A5', 'Mỹ', 'Intel Core i5-1135G7 2.4GHz up to 4.2GHz 8MB', '16GB (8GBx2) LPDDR4X 4266MHz (Onboard)', 'Intel Iris Xe Graphics', 'FreeDos', 58000, 55000, '14\" WUXGA (1920x1200), 16:10, IPS, DCI-P3 99%', '313.4 x 215.2 x 16.8 mm', 72, 1, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00032865_paracetamol_stada_500mg_10x10_4111_61af_large_6bbfac12ff.jpg', 0),
+(16, 'Thuốc Panactol Extra Khánh Hòa hỗ trợ hạ sốt và giảm đau (10 vỉ x 10 viên)', 'https://hangchinhhieu.vn/products/laptop-asus-zenbook-flip-13-ux363ea-hp726w-i5-1135g7', 'UX363EA-HP726W', 'Việt Nam', 'Intel Core i5-1135G7 2.4GHz up to 4.2GHz 8MB', '8GB LPDDR4X on board', 'Intel Iris Xe Graphics', 'Windows 11 Home', 60000, 58000, '13.3\" OLED FHD (1920 x 1080) 16:9 aspect ratio, 0.2ms response time, 550nits peak brightness, ', '30.5 x 21.1 x 1.19 ~ 1.39 (cm)', 0, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 3, 3, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00021697_panactol_extra_kh_10x10_9763_62ad_large_abeffbfadf.jpg', 0),
+(17, 'Thuốc Actadol 500mg Medipharco giảm nhanh các chứng sốt, đau nhức (10 vỉ x 10 viên)', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-eagle-an515-57-71vv-i7-11800h', 'AN515-57-71VV', 'Việt Nam', 'Intel Core i7-11800H 2.3GHz up to 4.6GHz 24MB', '4GB DDR4', 'NVIDIA GeForce RTX 3050 4GB GDDR6', 'Windows 11 Home', 45000, 43700, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Anti-Glare, 45% NTSC, 65% sRGB', '363.4 x 255 x 23.9 mm', 4, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 4, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00033763_actadol_500mg_medipharco_10x10_8398_624e_large_1af2cfcbfe.jpg', 0),
+(18, 'Thuốc Panactol 250mg Khapharco hỗ trợ giảm đau và hạ sốt (48 gói x 1.5g)', 'https://hangchinhhieu.vn/products/laptop-hp-victus-16-d0204tx-4r0u5pa-i5-11400h', '4R0U5PA', 'HP', 'Intel Core i5-11400H 2.7GHz up to 4.5GHz 12MB', '4GB DDR4', 'NVIDIA GeForce RTX 3050 4GB GDDR6', 'Windows 11 Home', 81500, 81000, '16.1\" FHD (1920 x 1080), 144Hz, IPS, micro-edge, Anti-Glare, 250nits, 45% NTSC', '37 x 26 x 2,35 cm', 4, 2, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00503075_panactol_250mg_khapharco_48_goi_x_15g_6773_63b6_large_ce8166f80d.jpg', 0),
+(19, 'Bột Glotadol 150mg Abbott hỗ trợ giảm đau và hạ sốt (20 gói x 2g)', 'https://hangchinhhieu.vn/products/laptop-hp-victus-16-e0175ax-4r0u8pa-r5-5600h', '4R0U8PA', 'Việt Nam', 'AMD Ryzen 5 5600H 3.3GHz up to 4.2GHz 16MB', '4GB DDR4', 'NVIDIA GeForce RTX 3050 4GB GDDR6', 'Windows 11 Home', 47800, 46200, '16.1\" FHD (1920 x 1080), 144 Hz, IPS, micro-edge, anti-glare, 250 nits, 45% NTSC', '37 x 26 x 2,35 cm', 4, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 2, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00030829_glotadol_150mg_abbott_glomed_20_goi_x_2g_9308_617b_large_c6d88b5169.JPG', 0),
+(20, 'Thuốc Tovalgan EF 500mg Trường Thọ Pharma hỗ trợ giảm đau và hạ sốt (5 vỉ x 4 viên)', 'https://hangchinhhieu.vn/products/laptop-hp-victus-16-e0170ax-4r0u7pa-r7-5800h', '4R0U7PA', 'Mỹ', 'AMD Ryzen 7 5800H 3.2GHz up to 4.4GHz 16MB', '4GB DDR4', 'NVIDIA® GeForce RTX™ 3050 4GB GDDR6', 'Windows 11 Home', 45600, 45000, '16.1\" FHD (1920 x 1080), 144Hz, IPS, micro-edge, Anti-Glare, 250nits, 45% NTSC', '37 x 26 x 2,35 cm', 4, 5, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00030902_tolvagan_ef_500mg_truong_tho_5x4_sui_9989_60d2_large_eaae950e7c.jpg', 0),
+(21, 'Thuốc Glotadol 650mg Abbott giúp giảm đau, hạ sốt (200 viên)', 'https://hangchinhhieu.vn/products/laptop-asus-zenbook-14x-oled-um5401qa-kn209w-r5-5600h', 'UM5401QA-KN209W', 'Anh', 'AMD Ryzen 5 5600H 3.3GHz up to 4.2GHz 16MB', '8GB LPDDR4X 4267MHz', 'AMD Radeon™ Graphics', 'Windows 11 Home', 32000, 31000, '14\" 2.8K (2880 x 1800) OLED 16:10 aspect ratio, LED Backlit, 0.2ms response time, 90Hz refresh rate, 550nits peak brightness, 100% DCI-P3 color gamut, 1,000,000:1, VESA CERTIFIED Display HDR True Black 500, 1.07 billion colors, PANTONE Validated, Glossy d', '31.12 x 22.11 x 1.59 (cm)', 3, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/glotadol_650_48d5c15327.jpg', 0),
+(22, 'Thuốc Glotadol 650mg Abbott giúp giảm đau, hạ sốt (200 viên)', 'https://hangchinhhieu.vn/products/laptop-gigabyte-g7-md-71s1123so-i7-11800h', 'G7 MD-71S1123SO', 'GIGABYTE', 'Intel Core i7-11800H 2.3GHz up to 4.6GHz 24MB', '4GB DDR4', 'NVIDIA GeForce RTX 3050Ti 4GB GDDR6 Boost Clock 1500 MHz, Maximum Graphics Power 75 W', 'Windows 11 Home', 31.99, 29.99, '17.3\" FHD (1920 x 1080) IPS, Anti-Glare with 72% NTSC, 100% sRGB, 144Hz, 3ms, 300nits', '395 x 262 x 25.9 (mm)', 4, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/glotadol_650_48d5c15327.jpg', 0),
+(23, 'Thuốc Glotadol 650mg Abbott giúp giảm đau, hạ sốt (200 viên)', 'https://hangchinhhieu.vn/products/laptop-acer-aspire-7-a715-42g-r4xx-r5-5500u', 'A715-42G-R4XX', 'ACER', 'AMD Ryzen 5-5500U 2.1GHz up to 4.0GHz 8MB', '4GB DDR4', 'NVIDIA GeForce GTX 1650 4GB GDDR6 + AMD Radeon™ Graphics', 'Windows 11 Home', 19.99, 16.99, '15.6\" FHD (1920 x 1080) IPS 60Hz SlimBezel, Acer ComfyView™ IPS LED LCD', '395 x 262 x 25.9 (mm)', 4, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 3, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/glotadol_650_48d5c15327.jpg', 0),
+(24, 'Thuốc Glotadol 650mg Abbott giúp giảm đau, hạ sốt (200 viên)', 'https://hangchinhhieu.vn/products/laptop-acer-nitro-5-tiger-an515-58-52sp-i5-12500h', 'AN515-58-52SP', 'ACER', 'Intel Core i5-12500H 3.3GHz up to 4.5GHz 18MB', '4GB DDR4', 'NVIDIA GeForce RTX™ 3050 4GB GDDR6', 'Windows 11 Home', 27.99, 25.99, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Acer ComfyView LED-backlit TFT LCD, SlimBezel', '360.4 x 271.09 x 25.9 mm', 4, 3, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 14, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/glotadol_650_48d5c15327.jpg', 0),
+(25, 'Thuốc Glotadol 650mg Abbott giúp giảm đau, hạ sốt (200 viên)', 'https://hangchinhhieu.vn/products/laptop-asus-tuf-dash-f15-fx516pm-hn002w-i7-11370h', 'FX516PM-HN002W', 'ASUS', 'Intel Core i7-11370H 3.0GHz up to 4.8GHz 12MB', '4GB DDR4', 'NVIDIA GeForce  RTX™ 3060 6GB GDDR6 With ROG Boost up to 1525MHz at 80W (85W with Dynamic Boost)', 'Windows 11 Home', 32.99, 29.99, '15.6\" FHD (1920 x 1080) 16:9, anti-glare display, 62.5% sRGB, 144Hz, IPS, Adaptive-Sync', '36.0 x 25.2 x 1.99 cm', 4, 2, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 2, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/glotadol_650_48d5c15327.jpg', 0),
+(26, 'Thuốc Glotadol 650mg Abbott giúp giảm đau, hạ sốt (200 viên)', 'https://hangchinhhieu.vn/products/laptop-acer-aspire-vero-av15-51r-541c-i5-1155g7', 'AV15-51R-541C', 'ACER', 'Intel Core i5-1155G7 2.5GHz up to 4.5GHz 8MB', '4GB DDR4', 'Intel Iris Xe Graphics', 'Windows 11 Home', 99.99, 19.99, '14\" FHD (1920 x 1080) IPS, SlimBezel PCR, ComfyView™ LCD', '363.4 x 238.5 x 17.9 (mm)', 3, 0, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/glotadol_650_48d5c15327.jpg', 0),
+(27, 'Thuốc Glotadol 650mg Abbott giúp giảm đau, hạ sốt (200 viên)', 'https://hangchinhhieu.vn/products/laptop-acer-aspire-5-a514-54-59qk-i5-1135g7', 'A514-54-59QK', 'ACER', 'Intel Core i5-1135G7 2.4GHz up to 4.2GHz 8MB', '4GB DDR4', 'Intel Iris Xe Graphics', 'Windows 11 Home', 99.99, 0, '14\" FHD (1920 x 1080) IPS, Acer ComfyView LCD', '328 x 233 x 17.95 (mm)', 3, 4, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 2, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/glotadol_650_48d5c15327.jpg', 0),
+(28, 'Thuốc Glotadol 650mg Abbott giúp giảm đau, hạ sốt (200 viên)', 'https://hangchinhhieu.vn/products/laptop-acer-aspire-3-a315-56-38b1-i3-1005g1', 'A315-56-38B1', 'ACER', 'Intel Core i3-1005G1 1.2GHz up to 3.4GHz 4MB', '4GB DDR4', 'Intel UHD Graphics', 'Windows 11 Home', 12.99, 10.99, '15.6\" FHD (1920 x 1080) Acer ComfyView LCD, Anti-Glare', '363 x 247.5 x 19.9 (mm)', 2, 5, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/glotadol_650_48d5c15327.jpg', 0),
+(29, 'Thuốc Glotadol 650mg Abbott giúp giảm đau, hạ sốt (200 viên)', 'https://hangchinhhieu.vn/products/laptop-asus-tuf-gaming-f15-fx506lh-hn188w-i5-10300h', 'FX506LH-HN188W', 'ASUS', 'Intel Core i5-10300H 2.5GHz up to 4.5GHz 8MB', '4GB DDR4', 'NVIDIA GeForce GTX 1650 4GB GDDR6 + Intel® UHD Graphics', 'Windows 11 Home', 21.99, 18.99, '15.6\" FHD (1920 x 1080) IPS, 144Hz, Wide View, 250nits, Narrow Bezel, Non-Glare with 45% NTSC, 63% sRGB', '35.9 x 25.6 x 2.47 ~ 2.49 cm', 3, 3, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 5, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/glotadol_650_48d5c15327.jpg', 0),
+(30, 'Thuốc Glotadol 650mg Abbott giúp giảm đau, hạ sốt (200 viên)', 'https://hangchinhhieu.vn/products/laptop-acer-travelmate-b3-tmb311-31-c2hb-c-n4020', 'TMB311-31-C2HB', 'ACER', 'Intel® Celeron® C-N4020 1.1GHz up to 2.8GHz 4MB', '4GB DDR4 2400MHz Onboard', 'Intel® UHD Graphics 605', 'Windows 11 Home', 9.99, 7.99, '11.6\" HD (1366 x 768) Acer ComfyView LED-backlit TFT LCD', '395 x 262 x 25.9 (mm)', 3, 3, 'The metal chassis is built well and houses a comfortable keyboard and touchpad. Ports include USB-C, two USB-A, HDMI, 3.5mm audio, and an SD card reader. Wi-Fi 6 is included, but theres no Thunderbolt due to the AMD platform. Otherwise, this is a beautiful laptop thats available at a great price.', 0, 0, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/glotadol_650_48d5c15327.jpg', 0),
+(32, 'Thuốc Glotadol 650mg Abbott giúp giảm đau, hạ sốt (200 viên)', 'tesst', 'test', 'test', 'test', 'test', 'test', 'test', 10, 10, 'test', 'test', 1, 1, 'test', 5, 10, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/glotadol_650_48d5c15327.jpg', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_image`
+-- Cấu trúc bảng cho bảng `product_image`
 --
 
 CREATE TABLE `product_image` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `url` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `product_image`
+-- Đang đổ dữ liệu cho bảng `product_image`
 --
 
 INSERT INTO `product_image` (`id`, `product_id`, `url`) VALUES
-(1, 1, 'https://product.hstatic.net/1000233206/product/lg-gram-2021-14zd90p-g-ax51a5-1_10ebeafae1d64bc5a00168a46e9db5b6_master.png'),
-(2, 1, 'https://product.hstatic.net/1000233206/product/lg-gram-2021-14zd90p-g-ax51a5-2_28a143359c51479bb89d4252dad842b1_master.png'),
-(3, 1, 'https://product.hstatic.net/1000233206/product/lg-gram-2021-14zd90p-g-ax51a5-3_03b1f2e7d7ed4fd18e2d52214563128b_master.png'),
-(4, 1, 'https://product.hstatic.net/1000233206/product/lg-gram-2021-14zd90p-g-ax51a5-4_25d72d460cd84e3983f7acfa138bdc78_master.png'),
-(5, 1, 'https://product.hstatic.net/1000233206/product/lg-gram-2021-14zd90p-g-ax51a5-5_c445e016edf74fe38a1e71e51df134b7_master.png'),
-(6, 1, 'https://product.hstatic.net/1000233206/product/lg-gram-2021-14zd90p-g-ax51a5_a2e71f3575f543d8940d22d64592e887_master.png'),
-(7, 2, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_16z90p-g.ah73a5-1_8da5c7050bf0484aa0d97b15576b5635_master.png'),
-(8, 2, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_16z90p-g.ah73a5-2_4c3d2b1214c5417080bc83a9a4d7e4a1_master.png'),
-(9, 2, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_16z90p-g.ah73a5-3_ff25507954dd41d5a4c3677c77d93de5_master.png'),
-(10, 2, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_16z90p-g.ah73a5-4_2e805f4b5f6b4cd4be72510dbc729944_master.png'),
-(11, 2, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_16z90p-g.ah73a5-5_d83dc6fc22fc42ed87f0c6c4e17718af_master.png'),
-(12, 2, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_16z90p-g.ah73a5_1022f07220d34034b8ca6da3ca669dea_master.png'),
+(1, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00008273_zoladex_36mg_3783_6127_large_d3c4d52581.jpg'),
+(2, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00000614_allerphast_180mg_4471_6361_large_d69336d518.jpg'),
+(3, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00000614_allerphast_180mg_5974_6361_large_4a0eb65399.jpg'),
+(4, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00000614_allerphast_180mg_3822_6361_large_1bffa6602f.jpg'),
+(5, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00000614_allerphast_180mg_2620_6361_large_649dad8b0a.jpg'),
+(6, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00000614_allerphast_180mg_9580_6361_large_fad5cdbfd4.jpg'),
+(7, 2, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00033509_clorpheniramin_4mg_khanh_hoa_10x20_7916_621e_large_ab09a106d1.jpg'),
+(8, 2, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00033509_clorpheniramin_4mg_khanh_hoa_10x20_2144_621e_large_185f794317.jpg'),
+(9, 2, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00033509_clorpheniramin_4mg_khanh_hoa_10x20_1926_621e_large_6b19be50b3.jpg'),
+(10, 2, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00033509_clorpheniramin_4mg_khanh_hoa_10x20_3667_621e_large_01831ee4fb.jpg'),
+(11, 2, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00033509_clorpheniramin_4mg_khanh_hoa_10x20_4602_621e_large_ad79cb6202.jpg'),
+(12, 2, 'https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00033509_clorpheniramin_4mg_khanh_hoa_10x20_1163_621e_large_0f5e472b56.jpg'),
 (13, 3, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_17zd90p-g.ax71a5-1_6e71a7ed27e844b08461082ff0713aec_master.png'),
 (14, 3, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_17zd90p-g.ax71a5-2_e149592385de466e81e9a70c430d8b79_master.png'),
 (15, 3, 'https://product.hstatic.net/1000233206/product/lg_gram_2021_17zd90p-g.ax71a5-3_1a05187fe74d4600b2dd41a5e973477b_master.png'),
@@ -487,137 +496,171 @@ INSERT INTO `product_image` (`id`, `product_id`, `url`) VALUES
 (193, 1, 'http://res.cloudinary.com/dd8b69mls/image/upload/v1654171543/jq6ztjvsqcijtdnrnobr.jpg'),
 (195, 1, 'http://res.cloudinary.com/dd8b69mls/image/upload/v1654171846/dtndg4nhtkslzyamsc1q.jpg');
 
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Cấu trúc bảng cho bảng `user`
+--
+
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `fName` varchar(255) NOT NULL,
+  `lName` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `birthday` date NOT NULL,
+  `url_avt` varchar(100) NOT NULL,
+  `isBlocked` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `password`, `fName`, `lName`, `email`, `phone`, `birthday`, `url_avt`, `isBlocked`) VALUES
+(1, 'tri', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Lê Cao Minh', 'Trí', '', '', '0000-00-00', 'http://res.cloudinary.com/dd8b69mls/image/upload/v1700723247/wr9szcjpnor4mgdfvw4b.jpg', 0),
+(2, 'dat', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Đào Xuân', 'Đạt', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
+(3, 'an', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Dư Văn', 'An', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
+(4, 'vinh', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Nguyễn Phúc', 'Vinh', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
+(5, '', '$2y$10$H6oicp/NPI/COT/ZxfMoz.4UNSEdP2kIgVHwJQAfylK7J78EpawO6', '', '', '', '', '0000-00-00', '', 0),
+(6, 'ldv20110044', '$2y$10$OIi.qCmxjMlVHqcj.gmid.wIiOpY1M5pCP.kFofHeUmT1He1R.YJa', 'Lưu Đặc ', 'Vũ', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
+(10, 'ldv290502', '$2y$10$RLSoMCjnMrbT11fEAm49QekDIbibS/Ibnotvjvh4hFGe23gxviMkm', 'Lưu Đặc ', 'Vũ', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
+(12, 'ldv29052002', '$2y$10$TpRzUxxj/gwcFp1cyXxYbO.CJLXWCpSlv6r9ru3EFmuO9SDomgXN6', '123', 'Vũ', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
+(16, 'a d', '$2y$10$Hb6f3dpuGVUNL3IohmbUues5ApLrRgUO5MANRTGjZlN9gOYhNBpMe', '123', 'Vũ', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0);
+
+--
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `admin`
+-- Chỉ mục cho bảng `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- Indexes for table `cart`
+-- Chỉ mục cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`user_id`,`product_id`),
   ADD KEY `cart_ibfk_2` (`product_id`);
 
 --
--- Indexes for table `comment`
+-- Chỉ mục cho bảng `comment`
 --
 ALTER TABLE `comment`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `comment_ibfk_1` (`user_id`);
 
 --
--- Indexes for table `orders`
+-- Chỉ mục cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `order_item`
+-- Chỉ mục cho bảng `order_item`
 --
 ALTER TABLE `order_item`
   ADD PRIMARY KEY (`order_id`,`product_id`),
   ADD KEY `order_item_ibfk_2` (`product_id`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`),
   ADD UNIQUE KEY `product_code` (`product_code`);
 
 --
--- Indexes for table `product_image`
+-- Chỉ mục cho bảng `product_image`
 --
 ALTER TABLE `product_image`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_image_ibfk_1` (`product_id`);
 
 --
--- Indexes for table `user`
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `comment`
+-- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT for table `product_image`
+-- AUTO_INCREMENT cho bảng `product_image`
 --
 ALTER TABLE `product_image`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `cart`
+-- Các ràng buộc cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
-
---
--- Constraints for table `comment`
+-- Các ràng buộc cho bảng `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- Constraints for table `order_item`
+-- Các ràng buộc cho bảng `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Các ràng buộc cho bảng `order_item`
 --
 ALTER TABLE `order_item`
   ADD CONSTRAINT `order_item_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
   ADD CONSTRAINT `order_item_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
 
 --
--- Constraints for table `product_image`
+-- Các ràng buộc cho bảng `product_image`
 --
 ALTER TABLE `product_image`
   ADD CONSTRAINT `product_image_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);

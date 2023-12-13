@@ -86,95 +86,78 @@
 
 // export default Comment;
 
-import * as React from "react";
-import Table from "@mui/material/Table";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  commentsSelector,
-  getCommentById,
-  removeCommentById,
-} from "../../store/reducers/commentsSlice";
-import swal from "sweetalert";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import DeleteIcon from "@mui/icons-material/Delete";
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import { useSelector, useDispatch } from 'react-redux';
+import { commentsSelector, getCommentById, removeCommentById } from '../../store/reducers/commentsSlice';
+import swal from 'sweetalert';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function Comments({ id }) {
-  // redux
-  const dispatch = useDispatch();
-  const comments = useSelector(commentsSelector);
+    // redux
+    const dispatch = useDispatch();
+    const comments = useSelector(commentsSelector);
 
-  const handleDelete = (id) => {
-    swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this comment!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        swal("Poof! Your imaginary file has been deleted!", {
-          icon: "success",
+    const handleDelete = (id) => {
+        swal({
+            title: 'Bạn có chắc chắn muốn xóa?',
+            text: 'Sau khi xóa sẽ không thể phục hồi!',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                swal('Nhận xét đã bị xóa', {
+                    icon: 'success',
+                });
+                dispatch(removeCommentById(id));
+            } else {
+                swal('Nhận xét không bị xóa!');
+            }
         });
-        dispatch(removeCommentById(id));
-        // navigate(`../product/detail/?id=${updatedProduct.product_id}`);
-      } else {
-        swal("Your imaginary file is safe!");
-      }
-    });
-    // dispatch(updateProduct(updatedProduct));
-  };
-  React.useEffect(() => {
-    dispatch(getCommentById(id));
-  }, [dispatch, id]);
-  if (comments.message) return <h1>No comment For product</h1>;
-  return (
-    <TableContainer
-      component={Paper}
-      style={{ marginBottom: "140px", padding: "0 14px" }}
-    >
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">Name</TableCell>
-            <TableCell align="center">Comment</TableCell>
-            <TableCell align="center">Rate</TableCell>
-            <TableCell align="center">Time</TableCell>
-            <TableCell align="center">Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {comments.map((comment) => (
-            <TableRow
-              key={comment.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell align="center">{comment.username}</TableCell>
-              <TableCell
-                component="th"
-                scope="comment"
-                align="center"
-                color="blue"
-              >
-                {comment.comment}
-              </TableCell>
-              <TableCell align="center">{comment.rate}</TableCell>
-              <TableCell align="center">{comment.datetime}</TableCell>
-              <TableCell
-                align="center"
-                style={{ cursor: "pointer" }}
-                onClick={() => handleDelete(parseInt(comment.id))}
-              >
-                <DeleteIcon color="danger" />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
+    };
+    React.useEffect(() => {
+        dispatch(getCommentById(id));
+    }, [dispatch, id]);
+    if (comments.message) return <h1>Sản phẩm không có bình luận nào</h1>;
+    return (
+        <TableContainer component={Paper} style={{ marginBottom: '140px', padding: '0 14px' }}>
+            <Table sx={{ minWidth: 650 }} size='small' aria-label='a dense table'>
+                <TableHead>
+                    <TableRow>
+                        <TableCell align='center'>Tên người dùng</TableCell>
+                        <TableCell align='center'>Nhận xét</TableCell>
+                        <TableCell align='center'>Đánh giá</TableCell>
+                        <TableCell align='center'>Thời gian</TableCell>
+                        <TableCell align='center'>Action</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {comments.map((comment) => (
+                        <TableRow key={comment.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                            <TableCell align='center'>{comment.username}</TableCell>
+                            <TableCell component='th' scope='comment' align='center' color='blue'>
+                                {comment.comment}
+                            </TableCell>
+                            <TableCell align='center'>{comment.rate}</TableCell>
+                            <TableCell align='center'>{comment.datetime}</TableCell>
+                            <TableCell
+                                align='center'
+                                style={{ cursor: 'pointer' }}
+                                onClick={() => handleDelete(parseInt(comment.id))}
+                            >
+                                <DeleteIcon color='danger' />
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    );
 }

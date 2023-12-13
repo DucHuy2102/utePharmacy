@@ -109,25 +109,35 @@ const Filter = (props) => {
                     <span></span>
                 </label>
             </Ram> */}
-            <TypeFilter>Giá tiền</TypeFilter>
+            <TypeFilter>Giá tiền (VND)</TypeFilter>
             <Slider
                 style={{ width: '90%', margin: '0 5%' }}
                 getAriaLabel={() => 'Minimum distance'}
                 value={props.value}
-                max={3000}
+                max={100000}
                 onChange={handleChange}
                 valueLabelDisplay='auto'
                 getAriaValueText={valuetext}
                 disableSwap
             />
             <Row>
-                <p style={{ fontSize: '20px', color: 'gray' }}>$</p>
-                <Input type='text' value={props.value[0]} onChange={(e) => changeMin(e)}></Input>
-                <p style={{ fontSize: '24px', color: 'gray' }}>-</p>
-                <Input type='text' value={props.value[1]} onChange={(e) => changeMax(e)}></Input>
+                {/* <p style={{ fontSize: '20px', color: 'gray' }}></p> */}
+                <Input
+                    style={{ width: '80px', textAlign: 'center' }}
+                    type='text'
+                    value={props.value[0]}
+                    onChange={(e) => changeMin(e)}
+                ></Input>
+                <p style={{ fontSize: '25px', color: 'gray', paddingTop: '10px' }}>-</p>
+                <Input
+                    style={{ width: '80px', textAlign: 'center' }}
+                    type='text'
+                    value={props.value[1]}
+                    onChange={(e) => changeMax(e)}
+                ></Input>
             </Row>
             <br />
-            <Button text='Apply Filter' onClick={applyFilter} />
+            <Button text='Tiến hành lọc' onClick={applyFilter} />
         </Container>
     );
 };

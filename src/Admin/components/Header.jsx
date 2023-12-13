@@ -9,6 +9,7 @@ import swal from 'sweetalert';
 import { Search, Input, Avatar, HeaderWrapper, Icon, IconSearch } from './style';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
 const Button1 = styled.button`
     outline: none;
     border: 1px solid #ccc;
@@ -35,21 +36,21 @@ const Header = ({ setToogleNav, isProduct }) => {
     };
     const handleLogout = () => {
         swal({
-            title: 'Are you sure?',
+            title: 'Bạn có chắc chắn muốn thoát?',
             text: '',
             icon: 'warning',
             buttons: true,
             dangerMode: true,
         }).then((willDelete) => {
             if (willDelete) {
-                swal('Logout success', {
+                swal('Đăng xuất thành công', {
                     icon: 'success',
                 });
                 // handleClose();
                 sessionStorage.removeItem('admin');
                 navigate('/admin/login');
             } else {
-                swal('Your imaginary file is safe!');
+                swal('Bạn đang ở trang quản lý của nhà thuốc!');
             }
         });
     };
@@ -59,12 +60,12 @@ const Header = ({ setToogleNav, isProduct }) => {
                 <AiOutlineMenu style={{ cursor: 'pointer' }} onClick={() => setToogleNav((toogleNav) => !toogleNav)} />
             </Icon>
             <Search>
-                <Input type='text' placeholder='Search here'></Input>
+                <Input type='text' placeholder='Tìm kiếm ...'></Input>
                 <IconSearch>
                     <BsSearch />
                 </IconSearch>
             </Search>
-            {isProduct && <Button1>Add Product</Button1>}
+            {isProduct && <Button1>Thêm sản phẩm mới</Button1>}
             <Avatar>
                 <Button
                     style={{ marginLeft: '-12px' }}
@@ -85,9 +86,9 @@ const Header = ({ setToogleNav, isProduct }) => {
                         'aria-labelledby': 'basic-button',
                     }}
                 >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
+                    <MenuItem onClick={handleClose}>Trang chủ</MenuItem>
+                    <MenuItem onClick={handleClose}>Tài khoản cá nhân</MenuItem>
+                    <MenuItem onClick={() => handleLogout()}>Đăng xuất</MenuItem>
                 </Menu>
             </Avatar>
         </HeaderWrapper>

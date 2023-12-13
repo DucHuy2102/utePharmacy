@@ -8,7 +8,6 @@ import { changeStateOrder, getAllOrder, ordersSelector } from '../../store/reduc
 import { useEffect } from 'react';
 import { Menu, MenuItem } from '@mui/material';
 import swal from 'sweetalert';
-// import { GrFormView } from "react-icons/gr";
 
 const Orders = () => {
     // state

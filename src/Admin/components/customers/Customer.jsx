@@ -12,6 +12,7 @@ const Wraper = styled.div`
     overflow: auto;
     width: 100%;
 `;
+
 const TableWraper = styled.div`
     /* width: 90%; */
     margin: 25px 8px;
@@ -21,6 +22,7 @@ const TableWraper = styled.div`
     padding: 4px 14px;
     color: #3c4858;
 `;
+
 const Customer = () => {
     // redux
     const dispatch = useDispatch();
@@ -36,18 +38,18 @@ const Customer = () => {
     return (
         <Wraper>
             <TableWraper>
-                <h3>Customer List</h3>
+                <h3>Danh sách khách hàng</h3>
                 <Table responsive='sm'>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Avatar</th>
-                            <th>Username</th>
-                            <th>Fullname</th>
+                            <th>Mã</th>
+                            <th>Ảnh</th>
+                            <th>Tên người dùng</th>
+                            <th>Họ và Tên</th>
                             <th>Email</th>
-                            <th>Phone</th>
-                            <th>BirtDay</th>
-                            <th>Status</th>
+                            <th>SĐT</th>
+                            <th>Ngày sinh</th>
+                            <th>Trạng thái</th>
                         </tr>
                     </thead>
                     <tbody>

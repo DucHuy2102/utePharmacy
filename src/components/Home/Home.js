@@ -218,11 +218,7 @@ const Home = (props) => {
                         />
                     </Carousel.Item>
                 </Carousel>
-                {/* <Brands>
-                    {brands.map((brand, idx) => {
-                        return <Brand key={idx} src={brand.img} alt='brand' onClick={() => filterBrand(brand)} />;
-                    })}
-                </Brands> */}
+
                 <Content>
                     <BoxFilter show={show}>
                         <Filter

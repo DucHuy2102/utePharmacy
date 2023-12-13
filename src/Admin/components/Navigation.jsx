@@ -23,7 +23,7 @@ const Navigation = ({ toogleNav, setIdOnClick }) => {
           alt=""
           he
         /> */}
-                <Heading>BKU</Heading>
+                <Heading>UTE PHARMACY</Heading>
             </Header>
 
             <List>
@@ -37,7 +37,7 @@ const Navigation = ({ toogleNav, setIdOnClick }) => {
                     <Icon>
                         <AiOutlineHome />
                     </Icon>
-                    <Title>Dashboard</Title>
+                    <Title>Bảng điều khiển</Title>
                 </Item>
                 <Item
                     onClick={() => {
@@ -49,7 +49,7 @@ const Navigation = ({ toogleNav, setIdOnClick }) => {
                     <Icon>
                         <FaProductHunt />
                     </Icon>
-                    <Title>Product</Title>
+                    <Title>Sản phẩm</Title>
                 </Item>
                 <Item
                     onClick={() => {
@@ -61,7 +61,7 @@ const Navigation = ({ toogleNav, setIdOnClick }) => {
                     <Icon>
                         <BsFillPeopleFill />
                     </Icon>
-                    <Title>Customer</Title>
+                    <Title>Khách hàng</Title>
                 </Item>
                 <Item
                     onClick={() => {
@@ -73,7 +73,7 @@ const Navigation = ({ toogleNav, setIdOnClick }) => {
                     <Icon>
                         <AiFillFileAdd />
                     </Icon>
-                    <Title>Add Product</Title>
+                    <Title>Thêm sản phẩm</Title>
                 </Item>
                 <Item
                     onClick={() => {
@@ -85,7 +85,7 @@ const Navigation = ({ toogleNav, setIdOnClick }) => {
                     <Icon>
                         <FaFirstOrder />
                     </Icon>
-                    <Title>Orders</Title>
+                    <Title>Đơn hàng</Title>
                 </Item>
             </List>
         </Container>

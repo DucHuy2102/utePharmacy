@@ -5,6 +5,7 @@ import { GiPadlock } from 'react-icons/gi';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+
 const Wraper = styled.div`
     /* display: flex;
   justify-content: center;
@@ -22,7 +23,7 @@ const InputLeft = styled.div`
 `;
 const Img = styled.div`
     background-color: #000;
-    border-radius: 10px;
+    border-radius: 10px 0px 0px 10px;
 `;
 const Heading = styled.h3`
     font-size: 28px;
@@ -52,7 +53,7 @@ const Input = styled.input`
 const ImgSrc = styled.img`
     width: 100%;
     object-fit: cover;
-    /* border-radius: 10px; */
+    border-radius: 5px 0px 0px 0px;
 `;
 const Remember = styled.div``;
 const ContainerBottom = styled.div`
@@ -90,9 +91,11 @@ const Button = styled.button`
 `;
 const Title = styled.h3`
     color: white;
-    font-size: 8px;
-    padding: 10px 4px;
+    font-size: 12px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
 `;
 const ContainerWraper = styled.div`
     display: flex;
@@ -107,6 +110,7 @@ const ContainerWraper = styled.div`
     border-radius: 10px;
     box-shadow: 0 0 6px #b2b2b2;
 `;
+
 const Login = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
@@ -135,9 +139,9 @@ const Login = () => {
         <Wraper>
             <ContainerWraper>
                 <InputLeft>
-                    <Heading>Admin Login</Heading>
+                    <Heading>Đăng nhập trang quản lý</Heading>
                     <Container>
-                        <Label>User name</Label>
+                        <Label>Tên người dùng</Label>
                         <InputWrap>
                             <Icon>
                                 <AiOutlineUser />
@@ -146,7 +150,7 @@ const Login = () => {
                         </InputWrap>
                     </Container>
                     <Container>
-                        <Label>Password</Label>
+                        <Label>Mật khẩu</Label>
                         <InputWrap>
                             <Icon>
                                 <GiPadlock />
@@ -161,19 +165,19 @@ const Login = () => {
                     <ContainerBottom>
                         <Remember>
                             <InputRemember type='checkbox'></InputRemember>
-                            <LabelRemember>Remember me</LabelRemember>
+                            <LabelRemember>Ghi nhớ tôi</LabelRemember>
                         </Remember>
                         <Remember>
-                            <A href=''>Forgot password?</A>
+                            <A href=''>Quên mật khẩu?</A>
                         </Remember>
                     </ContainerBottom>
                     <ContainerButton>
-                        <Button onClick={() => handleLogin()}>Login</Button>
+                        <Button onClick={() => handleLogin()}>Đăng nhập</Button>
                     </ContainerButton>
                 </InputLeft>
                 <Img>
-                    <ImgSrc src='https://toscaleblog.co.uk/wp-content/uploads/elementor/thumbs/Saly-10-p5irc3tooikkemk635karj2rc4plfa69aa5g3d59s4.png'></ImgSrc>
-                    <Title>Easy product management, as long as you have a network</Title>
+                    <ImgSrc src='https://media.capc.org/images/AdobeStock_274131656.original.original.jpg'></ImgSrc>
+                    <Title>Đăng nhập để quản lý hệ thống dễ dàng</Title>
                 </Img>
             </ContainerWraper>
         </Wraper>

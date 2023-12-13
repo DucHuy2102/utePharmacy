@@ -211,7 +211,7 @@ const Cart = () => {
                                 address.length >= 3 &&
                                 address.length <= 30 &&
                                 cart.length !== 0 &&
-                                !/\D/.test(phone) && <ButtonCheckout>Proceed to Checkout</ButtonCheckout>}
+                                !/\D/.test(phone) && <ButtonCheckout>Tiến hành thanh toán</ButtonCheckout>}
                         </Link>
                         {!(
                             name.length >= 3 &&
@@ -222,15 +222,15 @@ const Cart = () => {
                             !/\D/.test(phone)
                         ) && (
                             <ButtonFill onClick={() => ContainerNotification(name, phone, address)}>
-                                Gửi thông tin
+                                Tiến hành thanh toán
                             </ButtonFill>
                         )}
                         <NotificationContainer />
-                        {name.length >= 3 &&
+                        {/* {name.length >= 3 &&
                             name.length <= 14 &&
                             address.length >= 3 &&
                             address.length <= 30 &&
-                            !/\D/.test(phone) && <ButtonMultiple>Checkout with Multiple Address</ButtonMultiple>}
+                            !/\D/.test(phone) && <ButtonMultiple>Thanh toán với nhiều địa chỉ</ButtonMultiple>} */}
                     </Col>
                 </Row>
             </ContainerStyled>
@@ -361,7 +361,8 @@ const ButtonMultiple = styled.button`
 `;
 const ButtonFill = styled.button`
     border-radius: 20px;
-    background-color: white;
+    background-color: #0156ff;
+    color: #ffffff;
     font-weight: 600;
     display: block;
     height: 40px;

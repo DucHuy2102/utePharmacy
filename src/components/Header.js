@@ -46,6 +46,7 @@ const Header = (props) => {
                 style={{ backgroundColor: '#2167dd', fontSize: '18px' }}
             >
                 <Container style={{ maxWidth: '1350px', marginLeft: '100px', padding: '0px' }}>
+                    {/* logo */}
                     <Navbar.Brand as={Link} to='/' className='d-flex flex-row align-items-center gap-2'>
                         <img
                             src={require('./images/logo_UTE.png')}
@@ -68,7 +69,9 @@ const Header = (props) => {
                         </Title>
                     </Navbar.Brand>
 
+                    {/* search  */}
                     <Navbar.Collapse id='responsive-navbar-nav' style={{ marginLeft: '15%' }}>
+                        {/* Thanh tìm kiếm  */}
                         <SearchBar className='searchbar overflow-hidden'>
                             <SearchInput
                                 type='text'
@@ -94,6 +97,7 @@ const Header = (props) => {
 
                         <Nav className='me-auto'></Nav>
 
+                        {/* Góc sức khỏe */}
                         <Nav style={{ marginRight: '20px' }}>
                             <Nav.Link as={Link} to='/news' style={{ color: 'white' }}>
                                 Góc sức khỏe
@@ -101,7 +105,9 @@ const Header = (props) => {
                         </Nav>
                     </Navbar.Collapse>
 
+                    {/* right navbar: Giỏ hàng, Đăng nhập, Đăng xuất, ... */}
                     <NavIcon>
+                        {/* Giỏ hàng */}
                         <div style={{ marginLeft: 'auto', minWidth: '60px', marginRight: '15px' }}>
                             <Link
                                 style={{
@@ -123,6 +129,7 @@ const Header = (props) => {
                             </Link>
                         </div>
 
+                        {/* Quản lý tài khoản */}
                         <Dropdown>
                             <Dropdown.Toggle
                                 style={{

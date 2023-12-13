@@ -21,20 +21,20 @@ const SummaryInvoice = ({ order }) => {
     return (
         <>
             <Wrapper>
-                <SpanHeading>Payment Method</SpanHeading>
-                <SpanContent>Card</SpanContent>
+                <SpanHeading>Phương thức thanh toán</SpanHeading>
+                <SpanContent>Thẻ ngân hàng</SpanContent>
             </Wrapper>
             <Wrapper>
-                <SpanHeading>SHIPPING COST</SpanHeading>
-                <SpanContent>${order.total_ship}</SpanContent>
+                <SpanHeading>Phí vận chuyển</SpanHeading>
+                <SpanContent>{order.total_ship}.000đ</SpanContent>
             </Wrapper>
             <Wrapper>
-                <SpanHeading>DISCOUNT</SpanHeading>
-                <SpanContent>$0.00</SpanContent>
+                <SpanHeading>Giảm giá</SpanHeading>
+                <SpanContent>0đ</SpanContent>
             </Wrapper>
             <Wrapper>
-                <SpanHeading>TOTAL AMOUNT</SpanHeading>
-                <SpanContent color='red'>${(order.total_ship + order.total).toFixed(2)}</SpanContent>
+                <SpanHeading>Tổng chi phí</SpanHeading>
+                <SpanContent color='red'>{order.total_ship + order.total}đ</SpanContent>
             </Wrapper>
         </>
     );

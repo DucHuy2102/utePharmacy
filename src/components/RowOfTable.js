@@ -74,7 +74,7 @@ const RowOfTable = (props) => {
 
             setCount(count - 1);
         } else {
-            IsSure('Are you sure !!!', () => Delete(), 'Ignore delete one');
+            IsSure('Xóa sản phẩm !!!', () => Delete(), 'Ignore delete one');
         }
     };
     const Delete = () => {
@@ -105,11 +105,11 @@ const RowOfTable = (props) => {
             // message: 'Are you sure to delete !!!',
             buttons: [
                 {
-                    label: 'Yes',
+                    label: 'Đồng ý',
                     onClick: () => dispath(),
                 },
                 {
-                    label: 'No',
+                    label: 'Không',
                     onClick: () => console.log(log),
                 },
             ],
@@ -160,7 +160,7 @@ const RowOfTable = (props) => {
                             <AiOutlineCloseCircle
                                 size={18}
                                 color='#888888'
-                                onClick={() => IsSure('Are you sure !!!', () => Delete(), 'Ignore delete one')}
+                                onClick={() => IsSure('Xóa sản phẩm !!!', () => Delete(), 'Ignore delete one')}
                             />
                         </Close>
                     </CloseResponesive>
