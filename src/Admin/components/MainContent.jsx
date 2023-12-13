@@ -132,6 +132,13 @@ const MainContent = () => {
     const navigate = useNavigate();
     const allOrder = useSelector(ordersSelector);
     const dispatch = useDispatch();
+
+		const statusColor = new Map();
+		statusColor.set('Pending', '#0275d8');
+		statusColor.set('Delivering', '#f0ad4e');
+		statusColor.set('Delivered', '#5cb85c');
+		statusColor.set('Cancelled', '#d9534f');
+
     useEffect(() => {
         dispatch(getAllOrder());
     }, [dispatch]);
@@ -159,7 +166,7 @@ const MainContent = () => {
                                         <Td>{order.total}</Td>
                                         <Td>{order.total_ship}</Td>
                                         <Td>
-                                            <Span style={{ marginLeft: '-12px' }} src='' color='green'>
+                                            <Span style={{ marginLeft: '-12px' }} src='' color={statusColor.get(order.state)}>
                                                 {order.state}
                                             </Span>
                                         </Td>

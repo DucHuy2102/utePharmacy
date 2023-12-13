@@ -174,7 +174,7 @@ const Home = (props) => {
         const fetchProducts = async () => {
             if (isFirst) {
                 const res = await axios.get(`${process.env.REACT_APP_BACKEND_ROOT}/api/product/read.php`);
-                data = res.data.data.filter((p) => p.isDisabled === 0);
+                data = res.data.data.filter((p) => p.isDisabled == 0);
                 setcountPage(Math.ceil(data.length / num));
                 setfilteredProducts(data);
             }

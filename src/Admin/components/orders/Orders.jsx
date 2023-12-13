@@ -26,6 +26,12 @@ const Orders = () => {
         setAnchorEl(null);
     };
 
+		const statusColor = new Map();
+		statusColor.set('Pending', '#0275d8');
+		statusColor.set('Delivering', '#f0ad4e');
+		statusColor.set('Delivered', '#5cb85c');
+		statusColor.set('Cancelled', '#d9534f');
+
     // navigate
     const navigate = useNavigate();
 
@@ -49,7 +55,7 @@ const Orders = () => {
     return (
         <Wraper>
             <TableWraper>
-                <h3>Danh sách khách hàng</h3>
+                <h3>Danh sách đơn hàng</h3>
                 <Table responsive='sm'>
                     <thead>
                         <tr>
@@ -87,7 +93,7 @@ const Orders = () => {
                                                 });
                                             }}
                                             src=''
-                                            color='green'
+                                            color={statusColor.get(order.state)}
                                         >
                                             {order.state}
                                         </Span>
